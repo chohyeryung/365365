@@ -2,11 +2,16 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const app = express()
 const port = 1000
+const db = require('./db');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('hello word'))
+app.get('/', (req, res) => {
+    db.query("SELECT * FROM test", function(error, results){
+        console.log(results);
+    });
+})
 
 app.post('/student', (req, res) => {
     let student = req.body;
