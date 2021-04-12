@@ -22,10 +22,12 @@
     border-bottom-right-radius: 24px;
     margin-bottom: 5px;
     text-align: right;
+    cursor: pointer;
   }
 }
 
-.side-menu:hover {
+.side-menu:hover,
+.side-menu.clicked {
   div {
     opacity: 1;
     background-color: white;
