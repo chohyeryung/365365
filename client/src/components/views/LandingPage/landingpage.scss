@@ -3,7 +3,35 @@
   float: left;
   background: white;
   background-color: "#ffffff";
-  border-top-left-radius: 30px;
+  border-top-left-radius: 25px;
   margin-left: 20px;
   width: 100%;
+  border-spacing: 0;
+}
+
+table {
+  border-spacing: 0;
+  margin-top: 15px;
+  width: 100%;
+  table-layout: fixed;
+
+  .table-head {
+    height: 30px;
+    box-shadow: 1px 1px 1px 1px #4242421e;
+    font-weight: 700;
+
+    td {
+      padding-bottom: 10px;
+    }
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .first {
+    td {
+      padding-top: 10px;
+    }
+  }
 }
