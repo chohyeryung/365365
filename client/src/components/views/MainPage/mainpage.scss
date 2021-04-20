@@ -1,0 +1,78 @@
+body {
+  background-color: #008156;
+}
+
+a {
+  text-decoration: none;
+}
+
+.top_text {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 400;
+  padding-top: 60px;
+}
+
+.bottom_text {
+  font-size: 2.3rem;
+  color: white;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.main_container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outline_circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  border: solid 1px white;
+  border-radius: 200px;
+  margin: 30px;
+}
+
+.inline_circle {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 350px;
+  height: 350px;
+  border-radius: 175px;
+  box-shadow: 0px 0px 30px 8px #006845;
+}
+
+.go_student {
+  font-size: 2.5rem;
+  font-weight: bold;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #008156;
+}
+
+.student_top {
+  padding: 10px;
+}
+
+.student_bottom {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 30px;
+}
+
+.go_login {
+  color: #66b399;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 15px;
+}
