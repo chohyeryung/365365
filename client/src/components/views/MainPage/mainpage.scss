@@ -1,7 +1,3 @@
-body {
-  background-color: #008156;
-}
-
 a {
   text-decoration: none;
 }
@@ -25,6 +21,10 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #008156;
+
+  width: 100vw;
+  height: 100vh;
 }
 
 .outline_circle {
