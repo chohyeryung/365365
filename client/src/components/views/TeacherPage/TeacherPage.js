@@ -7,16 +7,18 @@ function TeacherPage() {
   return (
     <div
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: 0,
         left: 0,
-        width: "100%",
-        height: "100%",
+        height: '100vh',
+        padding: 0,
+        margin: 0,
         backgroundColor: "#008156",
+        boxSizing: 'border-box',
       }}
     >
       <Navbar />
-      <div style={{ display: "flex", height: "100%" }}>
+      <div style={{ display: "flex", height: "100vh" }}>
         <Sidebar />
         <LandingPage />
       </div>
