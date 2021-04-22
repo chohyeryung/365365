@@ -41,11 +41,10 @@ app.use('/students/:grade/:major', (req, res) => {
     let sgrade = req.params.grade;
     let shakbun = (req.params.major)==1||(req.params.major)==2  ? "뉴미디어소프트웨어과" : 
     ((req.params.major)==3||(req.params.major)==4 ? "뉴미디어웹솔루션과" : "뉴미디어디자인과");
-    console.log(sgrade);
-    console.log(shakbun);
-    //뉴미디어소프트웨어과 -> 3201에서 (학번) slice?로 두 번째가 1, 2이면 
-    //뉴미디어웹솔루션과 -> 3301에서 (학번) slice?로 두 번째가 3, 4이면 
-    //뉴미디어디자인과 -> 3601에서 (학번) slice?로 두 번째가 5, 6이면 
+    
+    //select로 학번을 가져와서
+    //slice로 학년이랑 반을 뽑아와야함 -> 그다음 where 절로 select
+    //json 형태로 client에 다시 보내주기
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
