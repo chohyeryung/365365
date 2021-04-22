@@ -3,20 +3,26 @@ import './sidebar.scss'
 
 function Sidebar() {
 
-    const [first, setFirst] = useState(true)
-    const [second, setSecond] = useState(false)
-    const [third, setThird] = useState(false)
+    const [first, setFirst] = useState(true);
+    const [second, setSecond] = useState(false);
+    const [third, setThird] = useState(false);
 
     const handleFirst = () => {
-        setFirst(!first);
+        setFirst(true);
+        setSecond(false);
+        setThird(false);
     }
 
     const handleSecond = () => {
-        setSecond(!second);
+        setFirst(false);
+        setSecond(true);
+        setThird(false);
     }
 
     const handleThird = () => {
-        setThird(!third);
+        setFirst(false);
+        setSecond(false);
+        setThird(true);
     }
 
     return (
