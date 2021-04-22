@@ -7,6 +7,7 @@
   margin-left: 20px;
   width: 100%;
   border-spacing: 0;
+  font-size: 14px;
 }
 
 table {
@@ -29,9 +30,56 @@ table {
     text-align: center;
   }
 
-  .first {
+  .row {
     td {
-      padding-top: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+    input {
+      border: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    input:focus {
+      border: 1px solid #adadad;
+      outline: none;
+    }
+  }
+
+  .empty-row {
+    background-color: #00815631;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    width: 90%;
+    td {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    input {
+      border: none;
+      background: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    input:focus {
+      border: 1px solid #adadad;
+      outline: none;
     }
   }
 }
