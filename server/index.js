@@ -36,11 +36,16 @@ app.get('/inserting', (req, res) => {
     });
 });
 
-app.post('/check', (req, res) => {
-    var job = schedule.scheduleJob('15 * * * * *', function() {
-        let now = new Date();
-        console.log(now);
-    })
+app.use('/students/:grade/:major', (req, res) => {
+    console.log('hi');
+    let sgrade = req.params.grade;
+    let shakbun = (req.params.major)==1||(req.params.major)==2  ? "뉴미디어소프트웨어과" : 
+    ((req.params.major)==3||(req.params.major)==4 ? "뉴미디어웹솔루션과" : "뉴미디어디자인과");
+    console.log(sgrade);
+    console.log(shakbun);
+    //뉴미디어소프트웨어과 -> 3201에서 (학번) slice?로 두 번째가 1, 2이면 
+    //뉴미디어웹솔루션과 -> 3301에서 (학번) slice?로 두 번째가 3, 4이면 
+    //뉴미디어디자인과 -> 3601에서 (학번) slice?로 두 번째가 5, 6이면 
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
