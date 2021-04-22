@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import './navbar.scss';
 
 function Navbar() {
@@ -8,20 +9,28 @@ function Navbar() {
     const [designClick, setdesignClick] = useState(false);
 
     const handleSoftware = () => {
-        setsoftClick(!softClick);
+        setsoftClick(true);
+        setwebClick(false);
+        setdesignClick(false);
     }
 
     const handleWeb = () => {
-        setwebClick(!webClick);
+        setsoftClick(false);
+        setwebClick(true);
+        setdesignClick(false);
     }
 
     const handleDesign = () => {
-        setdesignClick(!designClick);
+        setsoftClick(false);
+        setwebClick(false);
+        setdesignClick(true);
     }
 
     return (
         <nav className="NavbarItems">
-            <span className="navbar-logo" href="/">365,36.5</span>
+            
+                <span className="navbar-logo"><a href='/' style={{ textDecoration: 'none' }}>365, 36.5</a></span>
+            
             <ul className="nav-menu-container">
                 <li className={softClick ? 'nav-menu clicked' : 'nav-menu'} onClick={handleSoftware}>
                     <div>
