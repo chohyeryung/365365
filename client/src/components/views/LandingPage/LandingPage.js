@@ -1,6 +1,6 @@
 import React, { useState, createRef } from 'react'
 import './landingpage.scss';
-import icon_edit from './icon_edit.png';
+import RowComponent from './RowComponent';
 
 function LandingPage() {
 
@@ -23,14 +23,6 @@ function LandingPage() {
   const [tempTemperature, settempTemperature] = useState(0)
   const input_temp = createRef();
 
-  const handleEditBtn = (e) => {
-    input_temp.current.focus();
-  }
-
-  const handleChange = (e) => {
-    settempTemperature(e.target.value)
-  }
-
     return (
         <div className="content-table">
           <table>
@@ -45,21 +37,9 @@ function LandingPage() {
               {example_data.map(function(student, i) {
                   return (
                     student.temp === '' && student.time === '' ? 
-                    <tr className="empty-row" key={student.stnum}>
-                      <td>{student.stnum}</td>
-                      <td>{student.name}</td>
-                      <td>{student.time}</td>
-                      <td><input ref={input_temp} type="text" value={student.temp} onChange={handleChange} /></td>
-                      <td><button><img src={icon_edit} alt="edit icon" width={35} height={35} color={'#00000059'} onClick={ handleEditBtn }></img></button></td>
-                    </tr>
+                    <RowComponent key={ student.stnum } student={ student } isEmpty= { true } />
                     :
-                    <tr className="row" key={student.stnum}>
-                      <td>{student.stnum}</td>
-                      <td>{student.name}</td>
-                      <td>{student.time}</td>
-                      <td><input ref={input_temp} type="text" value={student.temp} onChange={handleChange} /></td>
-                      <td><button><img src={icon_edit} alt="edit icon" width={35} height={35} color={'#00000059'} onClick={ handleEditBtn }></img></button></td>
-                    </tr>
+                    <RowComponent key={ student.stnum } student={ student } isEmpty= { false } />
                   )
                 })
               }
