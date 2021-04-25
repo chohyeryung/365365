@@ -37,11 +37,37 @@ app.get('/inserting', (req, res) => {
 });
 
 app.use('/students/:grade/:major', (req, res) => {
-    console.log('hi');
     let sgrade = req.params.grade;
-    let shakbun = (req.params.major)==1||(req.params.major)==2  ? "뉴미디어소프트웨어과" : 
-    ((req.params.major)==3||(req.params.major)==4 ? "뉴미디어웹솔루션과" : "뉴미디어디자인과");
-    
+    let smajor = req.params.major;
+    let sclass = new Array();
+    if(smajor == "뉴미디어소프트웨어과") {
+        sclass.push('1');
+        sclass.push('2');
+    }else if(smajor == "뉴미디어웹솔루션과") {
+        sclass.push('3');
+        sclass.push('4');
+    }else {
+        sclass.push('5');
+        sclass.push('6');
+    }
+
+    const select_sql = "SELECT * FROM check_students WHERE LEFT(stnum, 1) = ? AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)";
+    var student_array = new Array();
+
+    db.query(select_sql, [sgrade, sclass[0], sclass[1]], function(error, students) {
+        if(error) throw error;
+
+        for(let j=0; j<students.length; j++) {
+                student_array.push(students[j]);
+        }
+        ssend(student_array);
+
+    });
+
+    function ssend(studenta) {
+        res.send(studenta);
+    }
+  
     //select로 학번을 가져와서
     //slice로 학년이랑 반을 뽑아와야함 -> 그다음 where 절로 select
     //json 형태로 client에 다시 보내주기

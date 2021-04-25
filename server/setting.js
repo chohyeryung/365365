@@ -34,7 +34,8 @@ function getFormDate(date) {
     return yyyy+'-'+month+'-'+day;
 }
 
-var job = schedule.scheduleJob('0 0 0 * * *', function() {
+//0 0 0 * * *
+var job = schedule.scheduleJob('0 10 2 * * *', function() {
     let now = new Date();
 
     let students_sql = "SELECT stnum, name FROM students";
