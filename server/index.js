@@ -114,13 +114,4 @@ app.get('/unchecking', (req, res) => {
     }); 
 });
 
-app.get('/test', (req, res) => {
-    const select_sql = `SELECT * FROM check_students`;
-
-    db.query(select_sql, (error, students) => {
-        if(error) throw error;
-        console.log(students);
-    }); 
-})
-
 app.listen(port, () => console.log(`app listening on port ${port}`));
