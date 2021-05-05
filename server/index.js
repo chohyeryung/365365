@@ -40,10 +40,10 @@ app.use('/students/:grade/:major', (req, res) => {
     let sgrade = req.params.grade;
     let smajor = req.params.major;
     let sclass = new Array();
-    if(smajor == "뉴미디어소프트웨어과") {
+    if(smajor == "뉴미디어소프트웨어") {
         sclass.push('1');
         sclass.push('2');
-    }else if(smajor == "뉴미디어웹솔루션과") {
+    }else if(smajor == "뉴미디어웹솔루션") {
         sclass.push('3');
         sclass.push('4');
     }else {
