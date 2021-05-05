@@ -17,10 +17,10 @@ app.get('/inserting', (req, res) => {
     let tmp = "36.5";
     let scode = "BC2110101";
 
-    const diff_sql = "SELECT * FROM students WHERE banum = ?";
-    const insert_sql = "INSERT INTO check_students (stnum, name, temp, date, checked) VALUES (?, ?, ?, ?, ?)";
+    const diff_sql = `SELECT * FROM students WHERE banum = ?`;
+    const insert_sql = `INSERT INTO check_students (stnum, name, temp, date, checked) VALUES (?, ?, ?, ?, ?)`;
 
-    db.query(diff_sql, [scode], function(error, student){
+    db.query(diff_sql, [scode], (error, student) => {
         if(student.length == 0) {
             console.log("해당 학생은 존재하지 않습니다.")
         }
@@ -29,7 +29,7 @@ app.get('/inserting', (req, res) => {
         let name = student[0].name;
         let now = new Date();
         
-        db.query(insert_sql, [hakbun, name, tmp, now, 1], function(error2, result) {
+        db.query(insert_sql, [hakbun, name, tmp, now, 1], (error2, result) => {
             if(error2) throw error2;
             console.log('좋은 하루 되세요');
         })
@@ -51,10 +51,11 @@ app.use('/students/:grade/:major', (req, res) => {
         sclass.push('6');
     }
 
-    const select_sql = "SELECT * FROM check_students WHERE LEFT(stnum, 1) = ? AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)";
+    const select_sql = `SELECT * FROM check_students WHERE LEFT(stnum, 1) = ? 
+    AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
     var student_array = new Array();
 
-    db.query(select_sql, [sgrade, sclass[0], sclass[1]], function(error, students) {
+    db.query(select_sql, [sgrade, sclass[0], sclass[1]], (error, students) => {
         if(error) throw error;
 
         for(let j=0; j<students.length; j++) {
@@ -67,10 +68,19 @@ app.use('/students/:grade/:major', (req, res) => {
     function ssend(studenta) {
         res.send(studenta);
     }
-  
-    //select로 학번을 가져와서
-    //slice로 학년이랑 반을 뽑아와야함 -> 그다음 where 절로 select
-    //json 형태로 client에 다시 보내주기
+
+});
+
+//엑셀 저장
+
+//체크 안 한 애들만 보여주는 페이지
+app.get('/unchecking', (req, res) => {
+    const select_sql = `SELECT * FROM check_students WHERE checked = 0`;
+
+    db.query(select_sql, (error, students) => {
+        if(error) throw error;
+        console.log(students);
+    }); 
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
