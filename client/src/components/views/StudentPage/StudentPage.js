@@ -6,7 +6,7 @@ import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 const StudentPage = () => {
 
   const handleScan = (result)=>{
-    
+    console.log(result);
   }
 
   const handleError = (err)=>{

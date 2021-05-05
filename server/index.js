@@ -72,6 +72,16 @@ app.use('/students/:grade/:major', (req, res) => {
 });
 
 //엑셀 저장
+app.get('/file_saving', (req, res) => {
+    // let sdate = req.body.sdate;
+    let sdate = '2021-04-25';
+    // const select_sql = `SELECT DATE_FORMAT(date, '%Y-%m-%d') AS date FROM check_students`;
+    const select_sql = `SELECT * FROM check_students WHERE date LIKE '${sdate}%'`;
+    
+    db.query(select_sql, (error, students) => {
+        console.log(students);
+    })
+});
 
 //체크 안 한 애들만 보여주는 페이지
 app.get('/unchecking', (req, res) => {
