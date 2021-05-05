@@ -35,7 +35,7 @@ function getFormDate(date) {
 }
 
 //0 0 0 * * *
-var job = schedule.scheduleJob('0 0 0 * * *', function() {
+var job = schedule.scheduleJob('1 44 23 * * *', function() {
     let now = new Date();
 
     let students_sql = "SELECT stnum, name FROM students";
@@ -50,14 +50,6 @@ var job = schedule.scheduleJob('0 0 0 * * *', function() {
             });
         }
     });
-
-    // let date_sql = "SELECT * FROM check_students WHERE DATE_FORMAT(date, '%Y-%m-%d') = ?";
-    // db.query(date_sql, [getYesterday(now)], function(error, results) {
-    //     if(results) {   //어제와 날짜가 같은 튜플이 있으면
-    //         console.log('데이터가 있다');
-    //         //엑셀 만들기 
-    //     }
-    // });
 })
 
 module.exports = job;

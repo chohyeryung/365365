@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const excel = require('exceljs');
 const app = express();
 const port = 1000;
 const db = require('./db');
@@ -74,13 +75,32 @@ app.use('/students/:grade/:major', (req, res) => {
 //엑셀 저장
 app.get('/file_saving', (req, res) => {
     // let sdate = req.body.sdate;
-    let sdate = '2021-04-25';
-    // const select_sql = `SELECT DATE_FORMAT(date, '%Y-%m-%d') AS date FROM check_students`;
+    let sdate = '2021-05-05';
     const select_sql = `SELECT * FROM check_students WHERE date LIKE '${sdate}%'`;
     
     db.query(select_sql, (error, students) => {
         console.log(students);
-    })
+        const jsonStudents = JSON.parse(JSON.stringify(students));
+    
+        let workbook = new excel.Workbook();
+        let worksheet = workbook.addWorksheet('students');
+
+        worksheet.columns = [
+            { header: '학번', key: 'stnum', width: 15 },
+            { header: '이름', key: 'name', width: 15 },
+            { header: '온도', key: 'temp', width: 15 },
+            { header: '날짜', key: 'date', width: 25 },
+            { header: '체크여부', key: 'checked', width: 10 }
+        ];
+
+        worksheet.addRows(jsonStudents);
+
+        workbook.xlsx.writeFile(`${(jsonStudents[0].date).substr(0, 10)}.xlsx`)
+        .then(function() {
+            console.log("다운 성공");
+            return;
+        });
+    });
 });
 
 //체크 안 한 애들만 보여주는 페이지
