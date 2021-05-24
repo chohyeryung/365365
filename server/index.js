@@ -10,6 +10,22 @@ const setting = require('./setting');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get('/inputtemp/:scode', (req, res) => {
+    let scode = req.params.scode;
+
+    const diff_sql = `SELECT * FROM students WHERE banum = ?`;
+
+    db.query(diff_sql, [scode], (error, student) => {
+        if(student.length == 0) {
+            res.send({ hakbun : "해당 학생은 존재하지 않습니다.", name : "해당 학생은 존재하지 않습니다." });
+        } else {
+            let hakbun = student[0].stnum;
+            let name = student[0].name;
+            res.send({ hakbun : hakbun, name : name});
+        }
+    });
+});
+
 app.get('/inserting', (req, res) => {
 
     // const info = req.body;
@@ -51,15 +67,16 @@ app.use('/students/:grade/:major', (req, res) => {
         sclass.push('6');
     }
 
-    const select_sql = `SELECT stnum, name, SUBSTRING(date, 12) AS date, temp FROM check_students WHERE LEFT(stnum, 1) = ? 
-    AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
+    const select_sql = `SELECT stnum, name, SUBSTRING(date, 12) AS date, temp 
+                        FROM check_students WHERE LEFT(stnum, 1) = ? 
+                        AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
     var student_array = new Array();
 
     db.query(select_sql, [sgrade, sclass[0], sclass[1]], (error, students) => {
         if(error) throw error;
-        console.log(students);
+        
         for(let j=0; j<students.length; j++) {
-                student_array.push(students[j]);
+            student_array.push(students[j]);
         }
        
         ssend(student_array);
@@ -72,14 +89,13 @@ app.use('/students/:grade/:major', (req, res) => {
 
 });
 
-//엑셀 저장
+
 app.get('/file_saving', (req, res) => {
     // let sdate = req.body.sdate;
     let sdate = '2021-05-05';
     const select_sql = `SELECT * FROM check_students WHERE date LIKE '${sdate}%'`;
     
     db.query(select_sql, (error, students) => {
-        console.log(students);
         const jsonStudents = JSON.parse(JSON.stringify(students));
     
         let workbook = new excel.Workbook();
@@ -103,7 +119,7 @@ app.get('/file_saving', (req, res) => {
     });
 });
 
-//체크 안 한 애들만 보여주는 페이지
+
 app.get('/unchecking', (req, res) => {
     const select_sql = `SELECT * FROM check_students WHERE checked = 0`;
 
