@@ -1,35 +1,39 @@
 import React, { useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
+import "./studentpage.scss";
 
 
 const StudentPage = () => {
 
+  const history = useHistory();
   const handleScan = (result)=>{
-    
+
+    // 코드 확인
+    history.push({
+      pathname: "/InputTemp",
+      state: {student: "3410오지민"}
+    })
+
   }
 
   const handleError = (err)=>{
-    console.error(err)
+    console.log(err)
   }
 
-
-  const [ data, setData ] = React.useState('Not Found');
- 
   return (
-    <div>
-      <div className="barcodwebcam">
-        <BarcodeScannerComponent
-          width={800}
-          height={600}
-          onUpdate={(err, result) => {
-            if (result) handleScan(result)
-            else handleError(err)
-          }}
-        />
+      <div className="main_container">
+        <div className="barcode_scanner">
+          <BarcodeScannerComponent
+        
+            onUpdate={(err, result) => {
+              if (result) handleScan(result)
+              else handleError(err)
+            }}
+          />
+        </div>
       </div>
       
-    </div>
   )
 
 }

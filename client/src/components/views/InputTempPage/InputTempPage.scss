@@ -1,0 +1,62 @@
+.body{
+    background-color: #003322;
+}
+
+.main_container {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.outline_input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 430px;
+    height: 534px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 150px;
+}
+
+.temp_text{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.input_temp{
+    width: 190px;
+    height: 40px;
+    margin: 20px 0;
+    outline: none;
+    text-align: center;
+    border: whitesmoke;
+    background-color: whitesmoke;
+}
+
+
+.keypad{
+    width: 300px;
+    text-align: center;  
+    
+}
+
+.key{
+    padding: 18px 15px 18px 15px;
+    margin: 0px;
+    width: 80px;
+    box-shadow: 0px 0px 2px gainsboro;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.cancle_key{
+    color: gray;
+}
+
+.student{
+    margin:18px 0px 0px 0px;
+}
