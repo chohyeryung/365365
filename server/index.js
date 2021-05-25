@@ -26,29 +26,20 @@ app.get('/inputtemp/:scode', (req, res) => {
     });
 });
 
-app.get('/inserting', (req, res) => {
+app.get('/updating', (req, res) => {
 
     // const info = req.body;
-    // let scode = info.code;  //학생 고유 코드
+    // let hakbun = info.hakbun;
     //let tmp = info.temperture;   //학생 온도
+
     let tmp = "36.5";
-    let scode = "BC2110101";
+    let hakbun = 3414;
 
-    const diff_sql = `SELECT * FROM students WHERE banum = ?`;
     const insert_sql = `UPDATE check_students SET temp = ?, date = ?, checked = ? WHERE stnum = ?`;
-
-    db.query(diff_sql, [scode], (error, student) => {
-        if(student.length == 0) {
-            console.log("해당 학생은 존재하지 않습니다.")
-        }
-
-        let hakbun = student[0].stnum;
-        let now = new Date();
-        
-        db.query(insert_sql, [tmp, now, 1, hakbun], (error2, result) => {
-            if(error2) throw error2;
-            console.log(result);
-        })
+    
+    db.query(insert_sql, [tmp, new Date(), 1, hakbun], (error, result) => {
+        if(error) throw error;
+        console.log(result);
     });
 });
 
