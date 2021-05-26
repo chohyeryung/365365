@@ -1,4 +1,4 @@
-.body{
+body{
     background-color: #003322;
 }
 
@@ -15,11 +15,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 430px;
-    height: 534px;
+    width: 400px;
+    height: 530px;
     background-color: white;
     border-radius: 20px;
-    margin: 150px;
+    margin: 130px;
+    
 }
 
 .temp_text{
@@ -27,7 +28,7 @@
     font-weight: bold;
 }
 
-.input_temp{
+#temp_input{
     width: 190px;
     height: 40px;
     margin: 20px 0;
@@ -35,8 +36,8 @@
     text-align: center;
     border: whitesmoke;
     background-color: whitesmoke;
+    line-height: 40px;
 }
-
 
 .keypad{
     width: 300px;
@@ -59,4 +60,5 @@
 
 .student{
     margin:18px 0px 0px 0px;
+    font-size: 1.1rem;
 }

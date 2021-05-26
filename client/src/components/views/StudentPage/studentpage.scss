@@ -1,10 +1,19 @@
+
+
 .main_container {
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
+.text_top{
+    font-size: 1.7rem;
+    color: whitesmoke;
+    margin-top: 28px;
+}
 .barcode_scanner{
-    height: 60%;
+    position: absolute;
+    top: 15%
 }
