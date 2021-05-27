@@ -10,6 +10,8 @@ const StudentPage = () => {
   const handleScan = (result)=>{
 
     // 코드 확인
+
+    
     history.push({
       pathname: "/InputTemp",
       state: {student: "3410오지민"}
@@ -26,7 +28,6 @@ const StudentPage = () => {
         <div className="text_top">학생증 바코드를 찍어주세요</div>
         <div className="barcode_scanner">
           <BarcodeScannerComponent
-        
             onUpdate={(err, result) => {
               if (result) handleScan(result)
               else handleError(err)

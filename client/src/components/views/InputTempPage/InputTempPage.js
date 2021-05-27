@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import {useLocation} from "react-router";
-import { Link, useHistory } from "react-router-dom";
-
+import {  useHistory } from "react-router-dom";
+import back from './icon/back_icon.png'
+import backspace from './icon/backspace_border.png'
 import "./InputTempPage.scss";
 
 
@@ -15,8 +16,8 @@ const InputTempPage = () => {
     const history = useHistory();
 
   
-    function onkeyclick(key) {
-        let temp = document.getElementById('temp_input')
+    const onKeyClick = (key) =>{
+        let temp = document.getElementById('temp_input_text')
         
         if(key=="완료"){
 
@@ -32,14 +33,20 @@ const InputTempPage = () => {
         }else{
             temp.innerHTML+=key
         }
+    }
 
-
+    const onBackspaceClick = () =>{
+        let temp = document.getElementById('temp_input_text')
+        temp.innerHTML = temp.innerHTML.slice(0,-1)
     }
    
-    
+    const onBackClick = () => {
+        history.goBack();
+    }
     
     return (
     <div className='main_container'>
+        <img src={back} className="back_icon" onClick={onBackClick}/>
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력
@@ -47,11 +54,14 @@ const InputTempPage = () => {
             <div className="student">
                 {student} 
             </div>
-
-            <div id ="temp_input">체온을 입력해주세요</div>
+            <div className="temp_input">
+                <div id ="temp_input_text">체온을 입력해주세요</div>
+                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick}/>
+            </div>
+            
             <div className="keypad">
                 {keys.map((key) =>{
-                   return <div onClick= {() => onkeyclick(key)} className="key">{key}</div>
+                   return <div onClick= {() => onKeyClick(key)} className="key">{key}</div>
                 })}
             </div>
         </div>
