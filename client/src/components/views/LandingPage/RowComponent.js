@@ -41,7 +41,7 @@ function RowComponent(props) {
       <tr className={isEmptyCheck(props.isEmpty)} key={props.student.stnum}>
         <td>{props.student.stnum}</td>
         <td>{props.student.name}</td>
-        <td>{props.student.time}</td>
+        <td>{props.student.date}</td>
         <td><input type="text" ref={ input_temp } value={props.student.temp} onChange={handleChange} /></td>
         <td>
           {
