@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import './navbar.scss';
 import { useDispatch } from 'react-redux';
 import { saveMajor } from '../../../_actions/send_actions';

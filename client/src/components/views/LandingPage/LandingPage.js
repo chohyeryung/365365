@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, createRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { SERVER } from '../../Config';
 import './landingpage.scss';
@@ -11,14 +11,15 @@ function LandingPage() {
   const [Students, setStudents] = useState([]);
 
   // get states from redux store
-  const { grade, major } = useSelector(state => ({
-    grade: state.send.grade,
-    major: state.send.major
-  }));
+  const grade = useSelector(state => state.send.grade);
+  const major = useSelector(state => state.send.major);
   
-  const endpoint = `${SERVER}students/${grade}/${major}`;
-  axios.get(endpoint)
-  .then(response => setStudents([...response.data]))
+  useEffect(() => {
+    const endpoint = `${SERVER}students/${grade}/${major}`;
+    axios.get(endpoint)
+    .then(response => {
+      setStudents([...response.data])})
+  }, [grade, major]);
   
     return (
         <div className="content-table">
