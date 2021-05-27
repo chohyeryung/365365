@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './navbar.scss';
+import { useDispatch } from 'react-redux';
+import { saveMajor } from '../../../_actions/send_actions';
 
 function Navbar() {
+    const dispatch = useDispatch();
 
     const [softClick, setsoftClick] = useState(true);
     const [webClick, setwebClick] = useState(false);
     const [designClick, setdesignClick] = useState(false);
+
+    let dataToSubmit = {
+        뉴미디어소프트웨어: softClick,
+        뉴미디어웹솔루션: webClick,
+        뉴미디어디자인: designClick
+    };
+
+    useEffect(() => {
+        dispatch(saveMajor(dataToSubmit));
+    })
 
     const handleSoftware = () => {
         setsoftClick(true);
@@ -25,7 +38,7 @@ function Navbar() {
         setwebClick(false);
         setdesignClick(true);
     }
-
+    
     return (
         <nav className="NavbarItems">
             
