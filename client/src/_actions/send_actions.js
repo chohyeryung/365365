@@ -4,12 +4,15 @@ import {
 } from './types';
 
 export const saveMajor = (dataToSubmit) => {
-    let major = ''
-    for(let i in dataToSubmit) {
-        if(dataToSubmit[i]) {
-            major = i;
-        }
+    let major = '';
+    let obj = {
+        '0': '뉴미디어소프트웨어',
+        '1': '뉴미디어웹솔루션',
+        '2': '뉴미디어디자인'
     }
+    dataToSubmit.forEach((d, index) => {
+        if(d) major = obj[''+index];
+    })
 
     return {
         type: SEND_MAJOR,
