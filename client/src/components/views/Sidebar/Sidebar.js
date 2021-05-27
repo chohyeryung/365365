@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { saveGrade } from '../../../_actions/send_actions';
 import './sidebar.scss'
 
 function Sidebar() {
+    const dispatch = useDispatch();
 
     const [first, setFirst] = useState(true);
     const [second, setSecond] = useState(false);
     const [third, setThird] = useState(false);
+
+    let dataToSubmit = [first, second, third]
+
+    useEffect(() => {
+        dispatch(saveGrade(dataToSubmit));
+    })
 
     const handleFirst = () => {
         setFirst(true);
