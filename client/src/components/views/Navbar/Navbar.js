@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './navbar.scss';
 import { useDispatch } from 'react-redux';
 import { saveMajor } from '../../../_actions/send_actions';
+import icon_download from './icon_download.png';
 
 function Navbar() {
     const dispatch = useDispatch();
@@ -19,6 +20,10 @@ function Navbar() {
             return menu;
         })
         setmenuClick(newClick);
+    }
+
+    const handleDownloadBtn = () => {
+        
     }
     
     return (
@@ -46,6 +51,13 @@ function Navbar() {
                         <span>
                             뉴미디어디자인
                         </span>
+                    </div>
+                </li>
+                <li onClick={handleDownloadBtn}>
+                    <div>
+                        <button className="download_btn">
+                            <img src={icon_download} alt="edit icon" width={40} height={40} />
+                        </button>
                     </div>
                 </li>
             </ul>
