@@ -30,12 +30,12 @@ app.get('/inputtemp/:scode', (req, res) => {
 
 app.get('/updating/:hakbun/:temperture', (req, res) => {
 
-    // const info = req.body;
-    // let hakbun = info.hakbun;
-    //let tmp = info.temperture;   //학생 온도
+    const info = req.body;
+    let hakbun = info.hakbun;
+    let tmp = info.temperture;   //학생 온도
 
-    let shakbun = req.params.hakbun;
-    let stmp = req.params.temperture;
+    // let tmp = "36.5";
+    // let hakbun = 3414;
 
     const insert_sql = `UPDATE check_students SET temp = ?, date = ?, checked = ? WHERE stnum = ?`;
     

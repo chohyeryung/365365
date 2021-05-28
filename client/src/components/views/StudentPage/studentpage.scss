@@ -1,0 +1,19 @@
+
+
+.main_container {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.text_top{
+    font-size: 1.7rem;
+    color: whitesmoke;
+    // margin-top: 10px;
+}
+.barcode_scanner{
+    position: absolute;
+    top: 200px;
+}
