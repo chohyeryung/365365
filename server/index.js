@@ -81,7 +81,7 @@ app.use('/students/:grade/:major', (req, res) => {
         sclass.push('6');
     }
 
-    const select_sql = `SELECT stnum, name, SUBSTRING(date, 12) AS date, temp 
+    const select_sql = `SELECT stnum, name, checked_time, temp 
                         FROM check_students WHERE LEFT(stnum, 1) = ? 
                         AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
     var student_array = new Array();
@@ -106,8 +106,8 @@ app.use('/students/:grade/:major', (req, res) => {
 
 app.get('/file_saving', (req, res) => {
     // let sdate = req.body.sdate;
-    let sdate = '2021-05-05';
-    const select_sql = `SELECT * FROM check_students WHERE date LIKE '${sdate}%'`;
+    let sdate = '2021-05-29';
+    const select_sql = `SELECT * FROM check_students WHERE checked_date = '${sdate}'`;
     
     db.query(select_sql, (error, students) => {
         const jsonStudents = JSON.parse(JSON.stringify(students));
@@ -119,13 +119,14 @@ app.get('/file_saving', (req, res) => {
             { header: '학번', key: 'stnum', width: 15 },
             { header: '이름', key: 'name', width: 15 },
             { header: '온도', key: 'temp', width: 15 },
-            { header: '날짜', key: 'date', width: 25 },
+            { header: '날짜', key: 'checked_date', width: 15 },
+            { header: '시간', key: 'checked_time', width: 15 },
             { header: '체크여부', key: 'checked', width: 10 }
         ];
 
         worksheet.addRows(jsonStudents);
 
-        workbook.xlsx.writeFile(`${(jsonStudents[0].date).substr(0, 10)}.xlsx`)
+        workbook.xlsx.writeFile(`${(jsonStudents[0].checked_date).substr(0, 10)}.xlsx`)
         .then(function() {
             console.log("다운 성공");
             return;
@@ -148,9 +149,9 @@ app.get('/unchecking', (req, res) => {
         day = `0${day}`
     }
 
-    now =  yyyy+'-'+month+'-'+day;
-    
-    const select_sql = `SELECT * FROM check_students WHERE checked = 0 and date like '%${now}%'`;
+    ndate =  yyyy + '-' + month + '-' + day;
+      
+    const select_sql = `SELECT * FROM check_students WHERE checked = 0 and checked_date = '${ndate}'`;
     
     db.query(select_sql, (error, students) => {
         if(error) throw error;
