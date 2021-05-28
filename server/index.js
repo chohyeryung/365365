@@ -28,18 +28,18 @@ app.get('/inputtemp/:scode', (req, res) => {
     });
 });
 
-app.get('/updating', (req, res) => {
+app.get('/updating/:hakbun/:temperture', (req, res) => {
 
     // const info = req.body;
     // let hakbun = info.hakbun;
     //let tmp = info.temperture;   //학생 온도
 
-    let tmp = "36.5";
-    let hakbun = 3414;
+    let shakbun = req.params.hakbun;
+    let stmp = req.params.temperture;
 
     const insert_sql = `UPDATE check_students SET temp = ?, date = ?, checked = ? WHERE stnum = ?`;
     
-    db.query(insert_sql, [tmp, new Date(), 1, hakbun], (error, result) => {
+    db.query(insert_sql, [stmp, new Date(), 1, shakbun], (error, result) => {
         if(error) throw error;
         console.log(result);
     });
