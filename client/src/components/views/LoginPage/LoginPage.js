@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./loginpage.scss";
+import login from "./login.json";
 
-function LoginPage() {
+function LoginPage({ history }) {
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const goTeacher = () => {
+    if (id === login.id && pw === login.pw) {
+      history.push("/teacher");
+    } else {
+      alert("Faild");
+    }
+  };
   return (
     <div className="container">
       <div className="white_box">
@@ -19,6 +29,7 @@ function LoginPage() {
                 className="id_pw_input"
                 type="text"
                 placeholder="아이디를 입력해주세요"
+                onChange={({ target: { value } }) => setId(value)}
               />
             </li>
           </ul>
@@ -31,16 +42,12 @@ function LoginPage() {
                 className="id_pw_input"
                 type="password"
                 placeholder="비밀번호를 입력해주세요"
+                onChange={({ target: { value } }) => setPw(value)}
               />
             </li>
           </ul>
-          <div className="keep_login_container">
-            <div className="keep_login_outline">
-              <div className="keep_login_inline"></div>
-            </div>
-            <p>로그인 상태 유지</p>
-          </div>
           <input
+            onClick={goTeacher}
             className="login_btn"
             type="button"
             name="login"
