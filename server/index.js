@@ -128,12 +128,6 @@ app.get('/unchecking', (req, res) => {
     }
 
     now =  yyyy+'-'+month+'-'+day;
-
-    
-
-    now = '2021-04-23';
-
-    console.log(now);
     
     const select_sql = `SELECT * FROM check_students WHERE checked = 0 and date like '%${now}%'`;
     
