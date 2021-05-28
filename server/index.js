@@ -4,9 +4,11 @@ const excel = require('exceljs');
 const app = express();
 const port = 1000;
 const db = require('./db');
+const cors = require('cors');
 
 const setting = require('./setting');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -112,8 +114,29 @@ app.get('/file_saving', (req, res) => {
 
 
 app.get('/unchecking', (req, res) => {
-    const select_sql = `SELECT * FROM check_students WHERE checked = 0`;
+    let now = new Date();
+    let yyyy= now.getFullYear();
+    let month= now.getMonth()+1;
+    let day= now.getDate();
 
+    if(month < 10) {
+        month = `0${month}`
+    }
+
+    if(day < 10) {
+        day = `0${day}`
+    }
+
+    now =  yyyy+'-'+month+'-'+day;
+
+    
+
+    now = '2021-04-23';
+
+    console.log(now);
+    
+    const select_sql = `SELECT * FROM check_students WHERE checked = 0 and date like '%${now}%'`;
+    
     db.query(select_sql, (error, students) => {
         if(error) throw error;
         
