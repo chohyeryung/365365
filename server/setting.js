@@ -1,5 +1,4 @@
 const schedule = require('node-schedule');
-// const excel = require('exceljs')
 const db = require('./db');
 
 function getYesterday(date) {
@@ -35,7 +34,7 @@ function getFormDate(date) {
 }
 
 //0 0 0 * * *
-var job = schedule.scheduleJob('1 59 0 * * *', function() {
+var job = schedule.scheduleJob('1 23 2 * * *', function() {
     let now = new Date();
 
     let students_sql = "SELECT stnum, name FROM students";
