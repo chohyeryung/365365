@@ -30,16 +30,37 @@ app.get('/inputtemp/:scode', (req, res) => {
 
 app.get('/updating/:hakbun/:temperture', (req, res) => {
 
-    const info = req.body;
-    let hakbun = info.hakbun;
-    let tmp = info.temperture;   //학생 온도
-
-    // let tmp = "36.5";
-    // let hakbun = 3414;
-
-    const insert_sql = `UPDATE check_students SET temp = ?, date = ?, checked = ? WHERE stnum = ?`;
+    let now = new Date();
+    let yyyy= now.getFullYear();
+    let month= now.getMonth()+1;
+    let day= now.getDate();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
     
-    db.query(insert_sql, [stmp, new Date(), 1, shakbun], (error, result) => {
+    if(month < 10) {
+        month = `0${month}`
+    }
+
+    if(day < 10) {
+        day = `0${day}`
+    }
+
+    if(hour < 12) {
+        hour = `0${hour}`
+    }
+
+    if(minute < 10) {
+        minute = `0${minute}`
+    }
+
+    ndate = yyyy + '-' + month + '-' + day;
+    ntime =  hour + ':' + minute;
+
+    let shakbun = req.params.hakbun;
+    let stmp = req.params.temperture;
+
+    const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
+    db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {
         if(error) throw error;
         console.log(result);
     });
