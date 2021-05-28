@@ -11,9 +11,9 @@ const InputTempPage = () => {
 
 
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
-    // const location = useLocation();
-    // const student = location.state.student;
-    const student ="3410 오지민"
+    const location = useLocation();
+    const student = location.state.student;
+    // const student ="3410 오지민"
     const history = useHistory();
 
   
@@ -28,15 +28,16 @@ const InputTempPage = () => {
             })
             .then((res)=>{
                 console.log(res)
+                
             })
             .catch((err)=>{
                 alert(err)
             })
 
 
-            // history.push({
-            //     pathname: "/student",
-            //   })
+            history.push({
+                pathname: "/student",
+            })
         }
         
         if(temp.innerHTML=="체온을 입력해주세요"){
