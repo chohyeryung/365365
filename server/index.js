@@ -12,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//학생 정보 존재 판별
 app.get('/inputtemp/:scode', (req, res) => {
     let scode = req.params.scode;
 
@@ -28,6 +29,7 @@ app.get('/inputtemp/:scode', (req, res) => {
     });
 });
 
+//학생 정보 수정, 온도 입력
 app.get('/updating/:hakbun/:temperture', (req, res) => {
 
     let now = new Date();
@@ -66,7 +68,8 @@ app.get('/updating/:hakbun/:temperture', (req, res) => {
     });
 });
 
-app.use('/students/:grade/:major', (req, res) => {
+//학생 정보 조회
+app.get('/students/:grade/:major', (req, res) => {
     let sgrade = req.params.grade;
     let smajor = req.params.major;
     let sclass = new Array();
@@ -103,7 +106,7 @@ app.use('/students/:grade/:major', (req, res) => {
 
 });
 
-
+//해당 날짜 엑셀 파일 저장
 app.get('/file_saving', (req, res) => {
     // let sdate = req.body.sdate;
     let sdate = '2021-05-29';
@@ -134,7 +137,7 @@ app.get('/file_saving', (req, res) => {
     });
 });
 
-
+//체크 안한 학생 조회
 app.get('/unchecking', (req, res) => {
     let now = new Date();
     let yyyy= now.getFullYear();
