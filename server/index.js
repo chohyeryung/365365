@@ -120,7 +120,7 @@ app.get('/file_saving', (req, res) => {
 });
 
 
-app.get('/unchecking', (req, res) => {
+app.get('/api/unchecking', (req, res) => {
     const select_sql = `SELECT * FROM check_students WHERE checked = 0`;
 
     db.query(select_sql, (error, students) => {
