@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import {useLocation} from "react-router";
+import axios from 'axios'
 import {  useHistory } from "react-router-dom";
 import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
@@ -21,11 +22,21 @@ const InputTempPage = () => {
         
         if(key=="완료"){
 
-            alert(parseInt(temp.innerHTML));
-            alert(parseInt(student.substr(0, 4)));
-            history.push({
-                pathname: "/student",
-              })
+            axios.post('http://localhost:1000/updating',{
+                temperture : temp.innerHTML,
+                hakbun :student.substr(0, 4)
+            })
+            .then((res)=>{
+                console.log(res)
+            })
+            .catch((err)=>{
+                alert(err)
+            })
+
+
+            // history.push({
+            //     pathname: "/student",
+            //   })
         }
         
         if(temp.innerHTML=="체온을 입력해주세요"){
@@ -39,14 +50,10 @@ const InputTempPage = () => {
         let temp = document.getElementById('temp_input_text')
         temp.innerHTML = temp.innerHTML.slice(0,-1)
     }
-   
-    const onBackClick = () => {
-        history.goBack();
-    }
     
     return (
     <div className='main_container'>
-        <img src={back} className="back_icon" onClick={onBackClick}/>
+        <img src={back} className="back_icon" onClick={()=>{history.goBack();}}/>
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력

@@ -1,20 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from "react-router-dom";
+import axios from 'axios'
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.scss";
 import back from './icon/back_icon.png'
 
 const StudentPage = () => {
 
+  const [student, setStudent] = useState("")
   const history = useHistory();
   const handleScan = (result)=>{
-
     // 코드 확인
-
+    alert(result)
+    axios.get('http://localhost:1000/inputtemp',{
+                scode:result
+            })
+            .then((res)=>{
+              setStudent(res.data)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
     
     history.push({
       pathname: "/InputTemp",
-      state: {student: "3410오지민"}
+      state: {student: student}
     })
 
   }
