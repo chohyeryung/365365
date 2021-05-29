@@ -71,6 +71,21 @@ app.get('/updating/:hakbun/:temperture', (req, res) => {
 
 //학생 정보 조회
 app.get('/students/:grade/:major', (req, res) => {
+    let now = new Date();
+    let yyyy= now.getFullYear();
+    let month= now.getMonth()+1;
+    let day= now.getDate();
+    
+    if(month < 10) {
+        month = `0${month}`
+    }
+
+    if(day < 10) {
+        day = `0${day}`
+    }
+
+    ndate = yyyy + '-' + month + '-' + day;
+
     let sgrade = req.params.grade;
     let smajor = req.params.major;
     let sclass = new Array();
@@ -87,10 +102,11 @@ app.get('/students/:grade/:major', (req, res) => {
 
     const select_sql = `SELECT stnum, name, checked_time, temp 
                         FROM check_students WHERE LEFT(stnum, 1) = ? 
-                        AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
+                        AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)
+                        AND checked_date = ?`;
     var student_array = new Array();
 
-    db.query(select_sql, [sgrade, sclass[0], sclass[1]], (error, students) => {
+    db.query(select_sql, [sgrade, sclass[0], sclass[1], ndate], (error, students) => {
         if(error) throw error;
         
         for(let j=0; j<students.length; j++) {
