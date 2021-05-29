@@ -24,7 +24,8 @@ app.get('/inputtemp/:scode', (req, res) => {
         } else {
             let hakbun = student[0].stnum;
             let name = student[0].name;
-            res.send({ hakbun : hakbun, name : name});
+            let info = hakbun+' '+name;
+            res.send({ info : info });
         }
     });
 });
