@@ -15,8 +15,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-webcam-barcode-scanner": "0.0.2-rc2",
+<<<<<<< HEAD
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
+=======
+>>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
     "web-vitals": "^1.0.1"
   },
   "scripts": {
