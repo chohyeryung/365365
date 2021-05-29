@@ -12,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//학생 정보 존재 판별
 app.get('/inputtemp/:scode', (req, res) => {
     let scode = req.params.scode;
 
@@ -28,24 +29,47 @@ app.get('/inputtemp/:scode', (req, res) => {
     });
 });
 
-app.post('/updating', (req, res) => {
+//학생 정보 수정, 온도 입력
+app.get('/updating/:hakbun/:temperture', (req, res) => {
 
-    const info = req.body;
-    let hakbun = info.hakbun;
-    let tmp = info.temperture;   //학생 온도
-
-    // let tmp = "36.5";
-    // let hakbun = 3414;
-
-    const insert_sql = `UPDATE check_students SET temp = ?, date = ?, checked = ? WHERE stnum = ?`;
+    let now = new Date();
+    let yyyy= now.getFullYear();
+    let month= now.getMonth()+1;
+    let day= now.getDate();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
     
-    db.query(insert_sql, [tmp, new Date(), 1, hakbun], (error, result) => {
+    if(month < 10) {
+        month = `0${month}`
+    }
+
+    if(day < 10) {
+        day = `0${day}`
+    }
+
+    if(hour < 12) {
+        hour = `0${hour}`
+    }
+
+    if(minute < 10) {
+        minute = `0${minute}`
+    }
+
+    ndate = yyyy + '-' + month + '-' + day;
+    ntime =  hour + ':' + minute;
+
+    let shakbun = req.params.hakbun;
+    let stmp = req.params.temperture;
+
+    const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
+    db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {
         if(error) throw error;
         console.log("save");
     });
 });
 
-app.use('/students/:grade/:major', (req, res) => {
+//학생 정보 조회
+app.get('/students/:grade/:major', (req, res) => {
     let sgrade = req.params.grade;
     let smajor = req.params.major;
     let sclass = new Array();
@@ -60,7 +84,7 @@ app.use('/students/:grade/:major', (req, res) => {
         sclass.push('6');
     }
 
-    const select_sql = `SELECT stnum, name, SUBSTRING(date, 12) AS date, temp 
+    const select_sql = `SELECT stnum, name, checked_time, temp 
                         FROM check_students WHERE LEFT(stnum, 1) = ? 
                         AND (SUBSTRING(stnum, 2,1) = ? OR SUBSTRING(stnum, 2,1) = ?)`;
     var student_array = new Array();
@@ -82,11 +106,11 @@ app.use('/students/:grade/:major', (req, res) => {
 
 });
 
-
+//해당 날짜 엑셀 파일 저장
 app.get('/file_saving', (req, res) => {
     // let sdate = req.body.sdate;
-    let sdate = '2021-05-05';
-    const select_sql = `SELECT * FROM check_students WHERE date LIKE '${sdate}%'`;
+    let sdate = '2021-05-29';
+    const select_sql = `SELECT * FROM check_students WHERE checked_date = '${sdate}'`;
     
     db.query(select_sql, (error, students) => {
         const jsonStudents = JSON.parse(JSON.stringify(students));
@@ -98,13 +122,14 @@ app.get('/file_saving', (req, res) => {
             { header: '학번', key: 'stnum', width: 15 },
             { header: '이름', key: 'name', width: 15 },
             { header: '온도', key: 'temp', width: 15 },
-            { header: '날짜', key: 'date', width: 25 },
+            { header: '날짜', key: 'checked_date', width: 15 },
+            { header: '시간', key: 'checked_time', width: 15 },
             { header: '체크여부', key: 'checked', width: 10 }
         ];
 
         worksheet.addRows(jsonStudents);
 
-        workbook.xlsx.writeFile(`${(jsonStudents[0].date).substr(0, 10)}.xlsx`)
+        workbook.xlsx.writeFile(`${(jsonStudents[0].checked_date).substr(0, 10)}.xlsx`)
         .then(function() {
             console.log("다운 성공");
             return;
@@ -112,9 +137,7 @@ app.get('/file_saving', (req, res) => {
     });
 });
 
-
-
-
+//체크 안한 학생 조회
 app.get('/unchecking', (req, res) => {
     let now = new Date();
     let yyyy= now.getFullYear();
@@ -129,15 +152,9 @@ app.get('/unchecking', (req, res) => {
         day = `0${day}`
     }
 
-    now =  yyyy+'-'+month+'-'+day;
-
-    
-
-    now = '2021-04-23';
-
-    console.log(now);
-    
-    const select_sql = `SELECT * FROM check_students WHERE checked = 0 and date like '%${now}%'`;
+    ndate =  yyyy + '-' + month + '-' + day;
+      
+    const select_sql = `SELECT * FROM check_students WHERE checked = 0 and checked_date = '${ndate}'`;
     
     db.query(select_sql, (error, students) => {
         if(error) throw error;
