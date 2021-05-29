@@ -108,9 +108,8 @@ app.get('/students/:grade/:major', (req, res) => {
 });
 
 //해당 날짜 엑셀 파일 저장
-app.get('/file_saving', (req, res) => {
-    // let sdate = req.body.sdate;
-    let sdate = '2021-05-29';
+app.get('/file_saving/:sdate', (req, res) => {
+    let sdate = req.params.sdate;
     const select_sql = `SELECT * FROM check_students WHERE checked_date = '${sdate}'`;
     
     db.query(select_sql, (error, students) => {
