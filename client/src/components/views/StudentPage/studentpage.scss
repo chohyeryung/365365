@@ -1,7 +1,3 @@
-body{
-    background-color: #003322;
-
-}
 
 .main_container {
     flex-direction: column;
@@ -15,9 +11,13 @@ body{
 .text_top{
     font-size: 1.7rem;
     color: whitesmoke;
-    // margin-top: 10px;
 }
 .barcode_scanner{
-    position: absolute;
-    top: 200px;
+    margin-top: 30px;
+}
+
+.text_bottom{
+    font-size: 1.2rem;
+    color: whitesmoke;
+    margin-bottom: 50px;
 }
