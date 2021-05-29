@@ -12,27 +12,25 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//학생 정보 존재 판별
-app.get('/inputtemp/:scode', (req, res) => {
-    let scode = req.params.scode;
+const getDate = () => {
+    let now = new Date();
+    let yyyy= now.getFullYear();
+    let month= now.getMonth()+1;
+    let day= now.getDate();
+    
+    if(month < 10) {
+        month = `0${month}`
+    }
 
-    const diff_sql = `SELECT * FROM students WHERE banum = ?`;
+    if(day < 10) {
+        day = `0${day}`
+    }
 
-    db.query(diff_sql, [scode], (error, student) => {
-        if(student.length == 0) {
-            res.send({ hakbun : "해당 학생은 존재하지 않습니다.", name : "해당 학생은 존재하지 않습니다." });
-        } else {
-            let hakbun = student[0].stnum;
-            let name = student[0].name;
-            let info = hakbun+' '+name;
-            res.send({ info : info });
-        }
-    });
-});
+    ndate = yyyy + '-' + month + '-' + day;
+    return ndate;
+}
 
-//학생 정보 수정, 온도 입력
-app.get('/updating/:hakbun/:temperture', (req, res) => {
-
+const getDateTime = () => {
     let now = new Date();
     let yyyy= now.getFullYear();
     let month= now.getMonth()+1;
@@ -59,6 +57,31 @@ app.get('/updating/:hakbun/:temperture', (req, res) => {
     ndate = yyyy + '-' + month + '-' + day;
     ntime =  hour + ':' + minute;
 
+    return ndate, ntime
+}
+
+//학생 정보 존재 판별
+app.get('/inputtemp/:scode', (req, res) => {
+    let scode = req.params.scode;
+
+    const diff_sql = `SELECT * FROM students WHERE banum = ?`;
+
+    db.query(diff_sql, [scode], (error, student) => {
+        if(student.length == 0) {
+            res.send({ hakbun : "해당 학생은 존재하지 않습니다.", name : "해당 학생은 존재하지 않습니다." });
+        } else {
+            let hakbun = student[0].stnum;
+            let name = student[0].name;
+            let info = hakbun+' '+name;
+            res.send({ info : info });
+        }
+    });
+});
+
+//학생 정보 수정, 온도 입력
+app.get('/updating/:hakbun/:temperture', (req, res) => {
+    let ndate, ntime = getDateTime();
+
     let shakbun = req.params.hakbun;
     let stmp = req.params.temperture;
 
@@ -71,20 +94,7 @@ app.get('/updating/:hakbun/:temperture', (req, res) => {
 
 //학생 정보 조회
 app.get('/students/:grade/:major', (req, res) => {
-    let now = new Date();
-    let yyyy= now.getFullYear();
-    let month= now.getMonth()+1;
-    let day= now.getDate();
-    
-    if(month < 10) {
-        month = `0${month}`
-    }
-
-    if(day < 10) {
-        day = `0${day}`
-    }
-
-    ndate = yyyy + '-' + month + '-' + day;
+    let ndate = getDate();
 
     let sgrade = req.params.grade;
     let smajor = req.params.major;
@@ -155,20 +165,7 @@ app.get('/file_saving/:sdate', (req, res) => {
 
 //체크 안한 학생 조회
 app.get('/unchecking', (req, res) => {
-    let now = new Date();
-    let yyyy= now.getFullYear();
-    let month= now.getMonth()+1;
-    let day= now.getDate();
-
-    if(month < 10) {
-        month = `0${month}`
-    }
-
-    if(day < 10) {
-        day = `0${day}`
-    }
-
-    ndate =  yyyy + '-' + month + '-' + day;
+    let ndate = getDate();
       
     const select_sql = `SELECT * FROM check_students WHERE checked = 0 and checked_date = '${ndate}'`;
     
