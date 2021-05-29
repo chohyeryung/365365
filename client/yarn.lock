@@ -1794,6 +1794,7 @@
   "version" "1.5.4"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@types/react-redux@^7.1.16":
   "integrity" "sha512-f/FKzIrZwZk7YEO9E1yoxIuDNRiDducxkFlkw/GNMGEnK9n4K8wJzlJBghpSuOVDgEUHoDkDF7Gi9lHNQR4siw=="
   "resolved" "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.16.tgz"
@@ -1818,11 +1819,16 @@
   "resolved" "https://registry.npmjs.org/@types/react/-/react-16.14.7.tgz"
   "version" "16.14.7"
 =======
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
 "@types/react@^16.9.35":
   "integrity" "sha512-YRRv9DNZhaVTVRh9Wmmit7Y0UFhEVqXqCSw3uazRWMxa2x85hWQZ5BN24i7GXZbaclaLXEcodEeIHsjBA8eAMw=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-16.14.5.tgz"
   "version" "16.14.5"
+<<<<<<< HEAD
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2604,6 +2610,7 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.1.4.tgz"
   "version" "4.1.4"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 "axios@^0.21.1":
   "integrity" "sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA=="
@@ -2613,6 +2620,8 @@
     "follow-redirects" "^1.10.0"
 =======
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
 
 "axobject-query@^2.2.0":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
@@ -5313,7 +5322,10 @@
 "follow-redirects@^1.0.0", "follow-redirects@^1.10.0":
 =======
 "follow-redirects@^1.0.0":
+<<<<<<< HEAD
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
   "integrity" "sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.13.3.tgz"
   "version" "1.13.3"
@@ -5794,10 +5806,14 @@
     "minimalistic-crypto-utils" "^1.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
 =======
 "hoist-non-react-statics@^3.1.0":
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+"hoist-non-react-statics@^3.1.0":
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
   "integrity" "sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw=="
   "resolved" "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -9587,10 +9603,14 @@
     "text-table" "0.2.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react-dom@^16.13.1", "react-dom@^17.0.2", "react-dom@>=15.3.0":
 =======
 "react-dom@^17.0.2":
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+"react-dom@^17.0.2":
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -9605,6 +9625,7 @@
   "version" "6.0.9"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -9612,6 +9633,8 @@
 
 =======
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
 "react-is@^16.6.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -9632,6 +9655,7 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 "react-redux@^7.2.4":
   "integrity" "sha512-hOQ5eOSkEJEXdpIKbnRyl04LhaWabkDPV+Ix97wqQX3T3d2NQ8DUblNXXtNMavc7DpswyQM6xfaN4HQDKNY2JA=="
@@ -9646,6 +9670,8 @@
     "react-is" "^16.13.1"
 =======
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
 
 "react-refresh@^0.8.3":
   "integrity" "sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg=="
@@ -9762,10 +9788,14 @@
   "version" "5.2.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "react@^16.13.1", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>=15.3.0":
 =======
 "react@^17.0.2":
 >>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+"react@^17.0.2":
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
