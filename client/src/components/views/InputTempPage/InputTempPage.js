@@ -5,6 +5,8 @@ import {  useHistory } from "react-router-dom";
 import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
 import "./InputTempPage.scss";
+import { SERVER } from '../../Config';
+
 
 const InputTempPage = () => {
 
@@ -16,32 +18,31 @@ const InputTempPage = () => {
 
   
     const onKeyClick = (key) =>{
-        let temp = document.getElementById('temp_input_text')
-        
-        if(key=="완료"){
+        let tempId = document.getElementById('temp_input_text')
+        let temp =  tempId.innerHTML
+        let hakbun = student.substr(0, 4)
 
-            axios.get('http://localhost:1000/updating',{
-                temperture : temp.innerHTML,
-                hakbun :student.substr(0, 4)
-            })
+        if(key=="완료"){
+            
+            const endpoint = `http://localhost:1000/updating/${hakbun}/${temp}`;
+            axios.get(endpoint)
             .then((res)=>{
                 console.log(res)
-                
             })
             .catch((err)=>{
                 alert(err)
             })
-
+         
 
             history.push({
                 pathname: "/student",
             })
         }
         
-        if(temp.innerHTML=="체온을 입력해주세요"){
-            temp.innerHTML=key
+        if(tempId.innerHTML=="체온을 입력해주세요"){
+            tempId.innerHTML=key
         }else{
-            temp.innerHTML+=key
+            tempId.innerHTML+=key
         }
     }
 

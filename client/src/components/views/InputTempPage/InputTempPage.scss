@@ -1,12 +1,11 @@
-body{
-    background-color: #003322;
-}
+
 
 .main_container {
     flex-direction: column;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
+    background-color: #003322;
 }
  
 .back_icon{
@@ -23,7 +22,6 @@ body{
     height: 530px;
     background-color: white;
     border-radius: 20px;
-    
 }
 
 .temp_text{

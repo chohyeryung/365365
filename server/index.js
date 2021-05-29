@@ -65,7 +65,7 @@ app.get('/updating/:hakbun/:temperture', (req, res) => {
     const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
     db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {
         if(error) throw error;
-        console.log("save");
+        console.log(result);
     });
 });
 

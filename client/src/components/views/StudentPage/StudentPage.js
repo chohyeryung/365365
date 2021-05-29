@@ -10,10 +10,8 @@ const StudentPage = () => {
   const [student, setStudent] = useState("")
   const history = useHistory();
   const handleScan = (result)=>{
-    // 코드 확인
-    axios.get('http://localhost:1000/inputtemp',{
-                scode:result
-            })
+    const endpoint = `http://localhost:1000/inputtemp/${result}`;
+            axios.get(endpoint)
             .then((res)=>{
               setStudent(res.data)
             })
