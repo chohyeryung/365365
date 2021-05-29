@@ -6,14 +6,12 @@ import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
 import "./InputTempPage.scss";
 
-
 const InputTempPage = () => {
 
-
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
-    const location = useLocation();
-    const student = location.state.student;
-    // const student ="3410 오지민"
+    // const location = useLocation();
+    // const student = location.state.student;
+    const student ="3410 오지민"
     const history = useHistory();
 
   

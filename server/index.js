@@ -28,7 +28,7 @@ app.get('/inputtemp/:scode', (req, res) => {
     });
 });
 
-app.get('/updating', (req, res) => {
+app.post('/updating', (req, res) => {
 
     const info = req.body;
     let hakbun = info.hakbun;
@@ -41,7 +41,7 @@ app.get('/updating', (req, res) => {
     
     db.query(insert_sql, [tmp, new Date(), 1, hakbun], (error, result) => {
         if(error) throw error;
-        console.log(result);
+        console.log("save");
     });
 });
 
@@ -111,6 +111,8 @@ app.get('/file_saving', (req, res) => {
         });
     });
 });
+
+
 
 
 app.get('/unchecking', (req, res) => {
