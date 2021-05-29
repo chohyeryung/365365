@@ -57,7 +57,7 @@ const getDateTime = () => {
     ndate = yyyy + '-' + month + '-' + day;
     ntime =  hour + ':' + minute;
 
-    return ndate, ntime
+    return { ndate, ntime };
 }
 
 //학생 정보 존재 판별
@@ -80,7 +80,9 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 
 //학생 정보 수정, 온도 입력
 app.get('/api/updating/:hakbun/:temperture', (req, res) => {
-    let ndate, ntime = getDateTime();
+    let dateTime = getDateTime();
+    let ndate = dateTime.ndate;
+    let ntime = dateTime.ntime;
 
     let shakbun = req.params.hakbun;
     let stmp = req.params.temperture;
