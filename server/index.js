@@ -141,27 +141,9 @@ app.get('/api/file_saving/:sdate', (req, res) => {
     const select_sql = `SELECT * FROM check_students WHERE checked_date = '${sdate}'`;
     
     db.query(select_sql, (error, students) => {
-        const jsonStudents = JSON.parse(JSON.stringify(students));
-    
-        let workbook = new excel.Workbook();
-        let worksheet = workbook.addWorksheet('students');
+        if(error) throw error;
 
-        worksheet.columns = [
-            { header: '학번', key: 'stnum', width: 15 },
-            { header: '이름', key: 'name', width: 15 },
-            { header: '온도', key: 'temp', width: 15 },
-            { header: '날짜', key: 'checked_date', width: 15 },
-            { header: '시간', key: 'checked_time', width: 15 },
-            { header: '체크여부', key: 'checked', width: 10 }
-        ];
-
-        worksheet.addRows(jsonStudents);
-
-        workbook.xlsx.writeFile(`${(jsonStudents[0].checked_date).substr(0, 10)}.xlsx`)
-        .then(function() {
-            console.log("다운 성공");
-            return;
-        });
+        res.send(students);
     });
 });
 
