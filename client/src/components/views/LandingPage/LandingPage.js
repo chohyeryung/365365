@@ -15,10 +15,18 @@ function LandingPage() {
   const major = useSelector(state => state.send.major);
   
   useEffect(() => {
-    const endpoint = `${SERVER}students/${grade}/${major}`;
-    axios.get(endpoint)
-    .then(response => {
-      setStudents([...response.data])})
+    if(grade === 4) {
+      const endpoint = `${SERVER}unchecking/`;
+      axios.get(endpoint)
+      .then(response => {
+        setStudents([...response.data])
+      })
+    } else {
+      const endpoint = `${SERVER}students/${grade}/${major}`;
+      axios.get(endpoint)
+      .then(response => {
+        setStudents([...response.data])})
+    }
   }, [grade, major]);
   
     return (
@@ -34,7 +42,7 @@ function LandingPage() {
               {/* map 함수를 이용해서 서버에서 json 형태로 받아오면 데이터 추출해서 row 추가하기 */}
               {Students.map(function(student, i) {
                   return (
-                    student.temp === '' && student.date === '' ? 
+                    student.temp === '' && student.checked_time === '00:00' ? 
                     <RowComponent key={ Number(student.stnum) } student={ student } isEmpty= { true } />
                     :
                     <RowComponent key={ Number(student.stnum) } student={ student } isEmpty= { false } />

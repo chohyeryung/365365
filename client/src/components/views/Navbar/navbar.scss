@@ -50,31 +50,3 @@
     box-shadow: 1px 1px 1px 1px #4242421e;
   }
 }
-
-.download_btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  outline: none;
-}
-
-.download-box {
-  display: none;
-  position: relative;
-  margin: 50px;
-  width: 400px;
-  height: 100px;
-  background: pink;
-  border-radius: 10px;
-}
-
-.download_box:after {
-  border-top: 0px solid transparent;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid pink;
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 200px;
-}
