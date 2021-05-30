@@ -1,39 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { saveGrade } from '../../../_actions/send_actions';
 import './sidebar.scss'
 
 function Sidebar() {
+    const dispatch = useDispatch();
 
-    const [first, setFirst] = useState(true)
-    const [second, setSecond] = useState(false)
-    const [third, setThird] = useState(false)
+    const [menuClick, setmenuClick] = useState([true, false, false, false]);
 
-    const handleFirst = () => {
-        setFirst(!first);
-    }
-
-    const handleSecond = () => {
-        setSecond(!second);
-    }
-
-    const handleThird = () => {
-        setThird(!third);
+    useEffect(() => {
+        dispatch(saveGrade(menuClick));
+    })
+    
+    const handleClick = (index) => {
+        let newClick = menuClick.map((menu, i) => {
+            if(i === index) menu = true;
+            else menu = false;
+            return menu;
+        })
+        setmenuClick(newClick);
     }
 
     return (
         <ul className="side-menu-container">
-            <li className={first ? 'side-menu clicked' : 'side-menu'} onClick={handleFirst}>
+            <li className={menuClick[0] ? 'side-menu clicked' : 'side-menu'} onClick={() => handleClick(0)}>
                 <div>
                     <span>1학년</span>
                 </div>
             </li>
-            <li className={second ? 'side-menu clicked' : 'side-menu'} onClick={handleSecond}>
+            <li className={menuClick[1] ? 'side-menu clicked' : 'side-menu'} onClick={() => handleClick(1)}>
                 <div>
                     <span>2학년</span>
                 </div>
             </li>
-            <li className={third ? 'side-menu clicked' : 'side-menu'} onClick={handleThird}>
+            <li className={menuClick[2] ? 'side-menu clicked' : 'side-menu'} onClick={() => handleClick(2)}>
                 <div>
                     <span>3학년</span>
+                </div>
+            </li>
+            <li className={menuClick[3] ? 'side-menu clicked' : 'side-menu'} onClick={() => handleClick(3)}>
+                <div>
+                    <span>미측정자</span>
                 </div>
             </li>
         </ul>

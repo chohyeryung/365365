@@ -6,13 +6,27 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+<<<<<<< HEAD
+    "axios": "^0.21.1",
+    "http-proxy-middleware": "^0.19.1",
+=======
     "axios": "0.21.1",
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-webcam-barcode-scanner": "0.0.2-rc2",
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+=======
+>>>>>>> c21d540b39f0cab9bdd46c4256d9ec08e7e35406
+=======
+>>>>>>> c7c37612fcaec977cffd62725f50ce909b16aff4
     "web-vitals": "^1.0.1"
   },
   "scripts": {
