@@ -6,7 +6,6 @@ tr {
       cursor: pointer;
       outline: none;
     }
-  
     .complete-btn {
       background: none;
       background-color: #008156;
@@ -15,6 +14,14 @@ tr {
       outline: none;
       padding: 20px;
     }
+    input::placeholder {
+      color: black;
+    }
+    input:focus::-webkit-input-placeholder {
+      color: transparent;
+    }
+  }
+  .empty-row {
+    background-color: #d1ede4;
   }
 }
-  

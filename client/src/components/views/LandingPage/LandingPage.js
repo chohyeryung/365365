@@ -27,7 +27,7 @@ function LandingPage() {
       .then(response => {
         setStudents([...response.data])})
     }
-  }, [grade, major]);
+  }, [Students]);
   
     return (
         <div className="content-table">
