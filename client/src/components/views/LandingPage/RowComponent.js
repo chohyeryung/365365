@@ -28,9 +28,11 @@ function RowComponent(props) {
   const handleCompleteButton = () => {
     input_temp.current.blur();
     setEditClicked(!editClicked);
-    const endpoint = `${SERVER}updating/${hakbun.current.innerText}/${temperature}`;
+    if(temperature !== '') {
+      const endpoint = `${SERVER}updating/${hakbun.current.innerText}/${temperature}`;
+      axios.get(endpoint)
+    }
     
-    axios.get(endpoint)
   }
 
   return (
@@ -45,9 +47,9 @@ function RowComponent(props) {
         <td>
           {
             editClicked ? (
-              <button type="button" style={{ backgroundColor: '#008156', color: 'white', outline: 'none', border: 'none', padding: '3px 5px 3px 5px', borderRadius: '3px', marginTop: '7px', marginBottom: '7px' }} onClick={ handleCompleteButton }>
-              완료
-              </button>
+                <button type="button" style={{ backgroundColor: '#008156', color: 'white', outline: 'none', border: 'none', padding: '3px 5px 3px 5px', borderRadius: '3px', marginTop: '7px', marginBottom: '7px' }} onClick={ handleCompleteButton }>
+                  완료
+                </button>
             ) :
               (
                 <button className="edit-btn" onClick={handleEditBtn}>
