@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import axios from 'axios'
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.scss";
@@ -13,7 +13,7 @@ const StudentPage = () => {
     const endpoint = `http://localhost:1000/inputtemp/${result}`;
             axios.get(endpoint)
             .then((res)=>{
-              setStudent(res.data)
+              setStudent(res.data.info)
             })
             .catch((err)=>{
                 console.log(err)
