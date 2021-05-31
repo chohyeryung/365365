@@ -11,9 +11,11 @@ function RowComponent(props) {
   const input_temp = useRef(null);
   const hakbun = useRef(null);
 
-  const isEmptyCheck = (isEmpty) => {
-    if (isEmpty) {
+  const isEmptyCheck = (color) => {
+    if (color === 'green') {
       return 'empty-row';
+    } else if (color === 'red') {
+      return 'strange-row';
     } else {
       return 'row';
     }
@@ -37,7 +39,7 @@ function RowComponent(props) {
 
   return (
     <>
-      <tr className={isEmptyCheck(props.isEmpty)} key={props.student.stnum}>
+      <tr className={isEmptyCheck(props.color)} key={props.student.stnum}>
         <td ref= { hakbun }>{props.student.stnum}</td>
         <td>{props.student.name}</td>
         <td>{props.student.checked_time}</td>
