@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
     background-color: #003322;
-
 }
 
 .text_top{
@@ -13,11 +12,18 @@
     color: whitesmoke;
 }
 .barcode_scanner{
-    margin-top: 30px;
+    margin-top: 15px;
+    
 }
 
 .text_bottom{
     font-size: 1.2rem;
     color: whitesmoke;
-    margin-bottom: 50px;
+    margin-bottom: 300px;
+}
+
+.back_icon{
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-bottom: 60px;
 }
