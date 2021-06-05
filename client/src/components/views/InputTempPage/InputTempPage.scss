@@ -1,12 +1,13 @@
-body{
-    background-color: #003322;
-}
+
 
 .main_container {
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
+    // background-color: #003322;
+    // height: auto;
+    // width: auto;0
 }
  
 .back_icon{
@@ -19,14 +20,15 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 530px;
+    width: 380px;
+    height: 560px;
     background-color: white;
     border-radius: 20px;
-    
+    margin-bottom: 100px;
 }
 
 .temp_text{
+    margin-top: 10px;
     font-size: 1.3rem;
     font-weight: bold;
 }
@@ -34,7 +36,7 @@ body{
 #temp_input_text{
     width: 190px;
     height: 40px;
-    margin: 20px 0;
+    margin: 18px 0;
     outline: none;
     text-align: center;
     border: whitesmoke;
@@ -45,7 +47,7 @@ body{
 .keypad{
     width: 300px;
     text-align: center;  
-    
+    margin-bottom: 15px;
 }
 
 .key{
@@ -72,7 +74,7 @@ body{
 }
 
 .backspace_icon{
-    margin: 22px 10px 20px 10px;
+    margin: 20px 10px 18px 10px;
     width: 40px;
     height: 36px;
 }
