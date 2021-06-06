@@ -11,15 +11,15 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     const endpoint = `http://localhost:1000/inputtemp/${result}`;
-            axios.get(endpoint)
-            .then((res)=>{
-              setStudent(res.data)
-              // alert(res.data)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-    
+    axios.get(endpoint)
+    .then((res)=>{
+      setStudent(...res.data)
+      // alert(res.data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+
     history.push({
       pathname: "/InputTemp",
       state: {student: student.info}
