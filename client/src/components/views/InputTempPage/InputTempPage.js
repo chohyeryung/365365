@@ -22,7 +22,7 @@ const InputTempPage = () => {
         
         if(key=="완료"){
 
-            axios.post('http://localhost:1000/updating',{
+            axios.post('http://localhost:1000/api/updating',{
                 temperture : temp.innerHTML,
                 hakbun :student.substr(0, 4)
             })

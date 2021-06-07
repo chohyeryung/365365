@@ -5,6 +5,8 @@ import login from "./login.json";
 function LoginPage({ history }) {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  console.log(login.id);
+  console.log(login.pw);
   const goTeacher = () => {
     if (id === login.id && pw === login.pw) {
       history.push("/teacher");

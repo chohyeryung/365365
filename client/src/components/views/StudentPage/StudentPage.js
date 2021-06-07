@@ -11,7 +11,7 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    axios.get('http://localhost:1000/inputtemp',{
+    axios.get('http://localhost:1000/api/inputtemp',{
                 scode:result
             })
             .then((res)=>{
