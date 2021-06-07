@@ -7,23 +7,22 @@ import back from './icon/back_icon.png'
 
 const StudentPage = () => {
 
-  const [student, setStudent] = useState([])
   const history = useHistory();
   const handleScan = (result)=>{
     const endpoint = `http://localhost:1000/inputtemp/${result}`;
     axios.get(endpoint)
     .then((res)=>{
-      setStudent(...res.data)
-      // alert(res.data)
+      history.push({
+        pathname: "/InputTemp",
+        state: {student: res.data.info}
+      })
+  
     })
     .catch((err)=>{
         console.log(err)
     })
 
-    history.push({
-      pathname: "/InputTemp",
-      state: {student: student.info}
-    })
+   
 
   }
 
