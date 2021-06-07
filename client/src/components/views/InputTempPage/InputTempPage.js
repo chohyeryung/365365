@@ -1,49 +1,48 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {useLocation} from "react-router";
 import axios from 'axios'
 import {  useHistory } from "react-router-dom";
 import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
 import "./InputTempPage.scss";
+// import { SERVER } from '../../Config';
 
 
 const InputTempPage = () => {
 
-
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
     const location = useLocation();
     const student = location.state.student;
-    // const student ="3410 오지민"
+    // const student ="1101 김미림"
     const history = useHistory();
 
   
     const onKeyClick = (key) =>{
-        let temp = document.getElementById('temp_input_text')
-        
-        if(key=="완료"){
+        let tempId = document.getElementById('temp_input_text')
+        let temp =  tempId.innerHTML
+        let hakbun = student.substr(0, 4)
 
-            axios.post('http://localhost:1000/updating',{
-                temperture : temp.innerHTML,
-                hakbun :student.substr(0, 4)
-            })
+        if(key=="완료"){
+            
+            const endpoint = `http://localhost:1000/api/updating/${hakbun}/${temp}`;
+            axios.get(endpoint)
             .then((res)=>{
                 console.log(res)
-                
             })
             .catch((err)=>{
                 alert(err)
             })
-
+         
 
             history.push({
                 pathname: "/student",
             })
         }
         
-        if(temp.innerHTML=="체온을 입력해주세요"){
-            temp.innerHTML=key
+        if(tempId.innerHTML=="체온을 입력해주세요"){
+            tempId.innerHTML=key
         }else{
-            temp.innerHTML+=key
+            tempId.innerHTML+=key
         }
     }
 

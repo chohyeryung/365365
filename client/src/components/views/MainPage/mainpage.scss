@@ -2,6 +2,17 @@ a {
   text-decoration: none;
 }
 
+.maincontainer {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #008156;
+  width: 100vw;
+  height: 100vh;
+}
+
+
 .top_text {
   font-size: 1.5rem;
   color: white;
@@ -16,15 +27,6 @@ a {
   padding: 15px;
 }
 
-.main_container {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #008156;
-  width: 100vw;
-  height: 100vh;
-}
 
 .outline_circle {
   display: flex;

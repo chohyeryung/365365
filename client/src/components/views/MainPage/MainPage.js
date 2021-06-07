@@ -4,7 +4,7 @@ import "./mainpage.scss";
 
 function MainPage() {
   return (
-    <div className="main_container">
+    <div className="maincontainer">
       <p className="top_text">더욱 간편한 일일 자가진단 서비스</p>
       <p className="bottom_text">365, 36.5</p>
 
