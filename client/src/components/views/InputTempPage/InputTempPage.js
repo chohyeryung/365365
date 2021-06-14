@@ -1,6 +1,7 @@
 import React from 'react'
 import {useLocation} from "react-router";
 import axios from 'axios'
+import { SERVER } from '../../Config';
 import {  useHistory } from "react-router-dom";
 import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
@@ -22,10 +23,10 @@ const InputTempPage = () => {
         let temp =  tempId.innerHTML
         let hakbun = student.substr(0, 4)
 
-        if(key=="완료"){
-            
-            const endpoint = `http://localhost:1000/api/updating/${hakbun}/${temp}`;
-            axios.get(endpoint)
+            axios.post(`${SERVER}updating/`,{
+                temperture : temp.innerHTML,
+                hakbun :student.substr(0, 4)
+            })
             .then((res)=>{
                 console.log(res)
             })
