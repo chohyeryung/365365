@@ -4,7 +4,7 @@ import axios from 'axios'
 import {  useHistory } from "react-router-dom";
 import back from './icon/back_icon.png'
 import backspace from './icon/backspace_border.png'
-import "./InputTempPage.scss";
+import "./InputTempPage.css";
 // import { SERVER } from '../../Config';
 
 

@@ -19,7 +19,7 @@ function getFormDate() {
 }
 
 //0 0 0 * * * 자정이 되면 초기화
-var job = schedule.scheduleJob('0 0 0 * * *', function() {
+var job = schedule.scheduleJob('1 26 0 * * *', function() {
     let students_sql = "SELECT stnum, name FROM students";
     let insert_sql = `INSERT INTO check_students (stnum, name, temp, checked_date, checked_time, checked) 
                         VALUES (?, ?, "", ?, "00:00", 0);`

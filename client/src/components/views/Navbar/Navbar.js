@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './navbar.scss';
+import './navbar.css';
 import { useDispatch } from 'react-redux';
 import { saveMajor } from '../../../_actions/send_actions';
 

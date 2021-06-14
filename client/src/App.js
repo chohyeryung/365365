@@ -1,4 +1,4 @@
-import "./App.scss";
+import "./App.css";
 import { HashRouter, Route } from "react-router-dom";
 import MainPage from "./components/views/MainPage/MainPage";
 import TeacherPage from "./components/views/TeacherPage/TeacherPage";

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useHistory } from "react-router-dom";
 import axios from 'axios'
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
-import "./studentpage.scss";
+import "./studentpage.css";
 import back from './icon/back_icon.png'
 
 const StudentPage = () => {

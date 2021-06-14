@@ -5,7 +5,7 @@ import { SERVER } from '../../Config';
 import { saveGrade } from '../../../_actions/send_actions';
 import xlsx from 'xlsx';
 import icon_download from './icon_download.png';
-import './sidebar.scss'
+import './sidebar.css'
 
 function Sidebar() {
     const dispatch = useDispatch();
@@ -41,7 +41,6 @@ function Sidebar() {
             setStudents([...response.data])})
         
         console.log(Students);
-        
         const wb = xlsx.utils.book_new();
         const dataWS = xlsx.utils.json_to_sheet(Students);
         xlsx.utils.book_append_sheet(wb, dataWS, `${year}-${month}-${day}_students`);

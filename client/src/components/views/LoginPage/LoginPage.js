@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./loginpage.scss";
+import "./loginpage.css";
 import login from "./login.json";
 
 function LoginPage({ history }) {

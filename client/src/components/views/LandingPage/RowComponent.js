@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import './rowcomponent.scss';
+import './rowcomponent.css';
 import icon_edit from './icon_edit.png';
 
 function RowComponent(props) {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { SERVER } from '../../Config';
-import './landingpage.scss';
+import './landingpage.css';
 import RowComponent from './RowComponent';
 
 function LandingPage() {

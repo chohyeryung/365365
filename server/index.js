@@ -143,6 +143,7 @@ app.get('/api/file_saving/:sdate', (req, res) => {
     db.query(select_sql, (error, students) => {
         if(error) throw error;
 
+        console.log(students);
         res.send(students);
     });
 });

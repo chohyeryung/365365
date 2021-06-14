@@ -1,0 +1,119 @@
+.side-menu-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 14px;
+  list-style: none;
+  width: 170px;
+  color: white;
+  font-weight: bold;
+  float: left;
+}
+
+.side-menu div{
+  color: #eeeded;
+  opacity: 0.7;
+  width: 170px;
+  height: 40px;
+  padding-top: 10px;
+  padding-right: 20px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  margin-bottom: 5px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.side-menu.clicked div{
+  opacity: 1;
+  background-color: white;
+  color: #008156;
+  box-shadow: 1px 1px 1px #4242421e;
+}
+
+.download-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 100%;
+  margin-left: 100px;
+}
+
+.download-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  margin-left: 10px;
+  margin-top: 90%;
+  border-radius: 5px;
+  padding: 2px;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 2px 2px 2px #4242421e;
+}
+
+.year-box {
+  text-align: center;
+  background-color: #e7e6e6;
+  width: 135px;
+  border-radius: 7px;
+  height: 40px;
+  margin: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.month-box {
+  text-align: center;
+  background-color: #e7e6e6;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 135px;
+  height: 40px;
+  border: none;
+}
+
+.date-box {
+  text-align: center;
+  background-color: #e7e6e6;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 135px;
+  height: 40px;
+  border: none;
+}
+
+.cancel-btn {
+  width: 50%;
+  background: none;
+  border: 2px solid #008156;
+  cursor: pointer;
+  color: #008156;
+  outline: none;
+  height: 25px;
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.complete-btn {
+  width: 50%;
+  border: none;
+  background: none;
+  background-color: #008156;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  height: 25px;
+  border-radius: 7px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
