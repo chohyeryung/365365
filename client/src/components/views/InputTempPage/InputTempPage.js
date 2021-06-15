@@ -39,7 +39,7 @@ const InputTempPage = () => {
             pathname: "/student",
         })
         
-        if(tempId.innerHTML=="체온을 입력해주세요"){
+        if(tempId.innerHTML==="체온을 입력해주세요"){
             tempId.innerHTML=key
         }else{
             tempId.innerHTML+=key
