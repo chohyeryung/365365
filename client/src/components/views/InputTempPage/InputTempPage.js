@@ -23,22 +23,21 @@ const InputTempPage = () => {
         let temp =  tempId.innerHTML
         let hakbun = student.substr(0, 4)
 
-            axios.post(`${SERVER}updating/`,{
-                temperture : temp.innerHTML,
-                hakbun :student.substr(0, 4)
-            })
-            .then((res)=>{
-                console.log(res)
-            })
-            .catch((err)=>{
-                alert(err)
-            })
-         
+        axios.post(`${SERVER}updating/`,{
+            temperture : temp.innerHTML,
+            hakbun :student.substr(0, 4)
+        })
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+        
 
-            history.push({
-                pathname: "/student",
-            })
-        }
+        history.push({
+            pathname: "/student",
+        })
         
         if(tempId.innerHTML=="체온을 입력해주세요"){
             tempId.innerHTML=key
