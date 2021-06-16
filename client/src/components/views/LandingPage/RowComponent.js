@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import './rowcomponent.css';
 import icon_edit from './icon_edit.png';
 import { SERVER } from '../../Config';
+import axios from 'axios';
 
 function RowComponent(props) {
 
