@@ -40,7 +40,6 @@ function Sidebar() {
         .then(response => {
             setStudents([...response.data])})
         
-        console.log(Students);
         const wb = xlsx.utils.book_new();
         const dataWS = xlsx.utils.json_to_sheet(Students);
         xlsx.utils.book_append_sheet(wb, dataWS, `${year}-${month}-${day}_students`);
