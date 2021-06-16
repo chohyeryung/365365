@@ -20,6 +20,13 @@ function Sidebar() {
     useEffect(() => {
         dispatch(saveGrade(menuClick));
     })
+
+    useEffect(() => {
+        const endpoint = `${SERVER}file_saving/${year}-${month}-${day}`;
+        axios.get(endpoint)
+        .then(response => {
+            setStudents([...response.data])})
+    }, [year, month, day]);
     
     const handleClick = (index) => {
         let newClick = menuClick.map((menu, i) => {
@@ -35,12 +42,6 @@ function Sidebar() {
     }
 
     const handleComplete = () => {
-        const endpoint = `${SERVER}file_saving/${year}-${month}-${day}`;
-        axios.get(endpoint)
-        .then(response => {
-            setStudents([...response.data])})
-        
-        console.log(Students);
         const wb = xlsx.utils.book_new();
         const dataWS = xlsx.utils.json_to_sheet(Students);
         xlsx.utils.book_append_sheet(wb, dataWS, `${year}-${month}-${day}_students`);
