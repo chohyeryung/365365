@@ -1,15 +1,23 @@
-tr td .edit-btn{
+tr td .edit-btn {
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
 }
 
-tr td .complete-btn{
+tr td .complete-btn {
   background: none;
   background-color: #008156;
   cursor: pointer;
   color: white;
   outline: none;
   padding: 20px;
+}
+
+tr td input::placeholder {
+  color: black;
+}
+
+tr td input:focus::-webkit-input-placeholder {
+  color: transparent;
 }

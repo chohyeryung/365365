@@ -27,7 +27,7 @@ function LandingPage() {
       .then(response => {
         setStudents([...response.data])})
     }
-  }, [grade, major]);
+  }, [Students]);
   
     return (
         <div className="content-table">
@@ -42,10 +42,12 @@ function LandingPage() {
               {/* map 함수를 이용해서 서버에서 json 형태로 받아오면 데이터 추출해서 row 추가하기 */}
               {Students.map(function(student, i) {
                   return (
-                    student.temp === '' && student.checked_time === '00:00' ? 
-                    <RowComponent key={ Number(student.stnum) } student={ student } isEmpty= { true } />
-                    :
-                    <RowComponent key={ Number(student.stnum) } student={ student } isEmpty= { false } />
+                      student.temp === '' && student.checked_time === '00:00'
+                      ? <RowComponent key={ Number(student.stnum) } student={ student } color='green' />
+                    : ( Number(student.temp) >= 37.5
+                    ? <RowComponent key={ Number(student.stnum) } student={ student } color='red' />
+                    : <RowComponent key={ Number(student.stnum) } student={ student } color='white' />
+                    )
                   )
                 })
               }
