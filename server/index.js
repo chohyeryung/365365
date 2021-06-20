@@ -10,6 +10,7 @@ const setting = require('./setting');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(bodyParser.json());
 
 // const lex = require('greenlock-express').create({
@@ -77,6 +78,10 @@ const getDateTime = () => {
 
     return { ndate, ntime };
 }
+
+app.get('/', (req, res) => {
+    res.send(express.static(path.join(__dirname, '../client/build/index.html')));
+})
 
 //학생 정보 존재 판별
 app.get('/api/inputtemp/:scode', (req, res) => {
@@ -180,3 +185,5 @@ app.get('/api/unchecking', (req, res) => {
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
+
+// "start": "export PORT=80 && react-scripts start",
