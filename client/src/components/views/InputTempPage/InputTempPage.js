@@ -13,8 +13,8 @@ const InputTempPage = () => {
 
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
     const location = useLocation();
-    const student = location.state.student;
-    // const student ="1101 김미림"
+    // const student = location.state.student;
+    const student ="1101 김미림"
     const history = useHistory();
 
   
@@ -23,21 +23,25 @@ const InputTempPage = () => {
         let temp =  tempId.innerHTML
         let hakbun = student.substr(0, 4)
 
-        axios.post(`${SERVER}updating/`,{
-            temperture : temp.innerHTML,
-            hakbun :student.substr(0, 4)
-        })
-        .then((res)=>{
-            console.log(res)
-        })
-        .catch((err)=>{
-            alert(err)
-        })
         
+        if(key=="완료"){
+            
+            axios.post(`${SERVER}updating/`,{
+                temperture : temp.innerHTML,
+                hakbun :student.substr(0, 4)
+            })
+            .then((res)=>{
+                console.log(res)
+            })
+            .catch((err)=>{
+                alert(err)
+            })
 
-        history.push({
-            pathname: "/student",
-        })
+            history.push({
+                pathname: "/student",
+            })
+        }
+       
         
         if(tempId.innerHTML==="체온을 입력해주세요"){
             tempId.innerHTML=key

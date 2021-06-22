@@ -4,6 +4,7 @@ import axios from 'axios'
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.css";
 import back from './icon/back_icon.png'
+import { SERVER } from '../../Config';
 
 const StudentPage = () => {
 
@@ -11,15 +12,13 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    axios.get('http://localhost:1000/api/inputtemp',{
-                scode:result
-            })
-            .then((res)=>{
-              setStudent(res.data)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
+      axios.post(`${SERVER}/inputtemp/${result}`)
+      .then((res)=>{
+        setStudent(res.data)
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
     
     history.push({
       pathname: "/InputTemp",
