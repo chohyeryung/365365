@@ -40,12 +40,10 @@ const StudentPage = () => {
  
   return (
       <div className="main_container">
-        <img src={back} className="back_icon" onClick={()=>{  history.push({ pathname: "/",})}}/>
+        <img src={back} className="back_icon" onClick={()=>{  history.push({ pathname: "/",})}} alt=""/>
         <div className="text_top">학생증 바코드를 찍어주세요</div>
         <div className="barcode_scanner">
           <BarcodeScannerComponent
-           width={600}
-           height={200}
             onUpdate={(err, result) => {
               if (result) handleScan(result)
               else handleError(err)
