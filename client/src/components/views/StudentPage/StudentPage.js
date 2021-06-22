@@ -12,9 +12,8 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    axios.get(`${SERVER}inputtemp`,{
-                scode:result.text
-            })
+    const scode = result.text;
+    axios.get(`${SERVER}inputtemp/${scode}`)
             .then((res)=>{
               // setStudent(res.data.info)
               console.log(res.data.info);
@@ -29,10 +28,6 @@ const StudentPage = () => {
             .catch((err)=>{
                 console.log(err)
             })
-    
-    
-
-   
 
   }
 
