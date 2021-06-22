@@ -12,9 +12,8 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    console.log(result.text);
     axios.get(`${SERVER}inputtemp`,{
-                scode:result
+                scode:result.text
             })
             .then((res)=>{
               setStudent(res.data.info)
@@ -25,7 +24,7 @@ const StudentPage = () => {
     
     history.push({
       pathname: "/InputTemp",
-      state: {student: student}
+      state: {stu: student}
     })
     .catch((err)=>{
         console.log(err)
