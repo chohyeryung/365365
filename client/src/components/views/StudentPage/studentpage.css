@@ -13,7 +13,10 @@
 }
 .barcode_scanner{
     margin-top: 15px;
-    
+
+    /* margin-bottom: 15px; */
+    /* width: 50%; */
+    /* height: 50%; */
 }
 
 .text_bottom{
@@ -21,9 +24,7 @@
     color: whitesmoke;
     margin-bottom: 300px;
 }
-
 .back_icon{
-    margin-top: 50px;
-    margin-left: 30px;
-    margin-bottom: 60px;
+    width: 150px;
+    margin-right: 90%;
 }

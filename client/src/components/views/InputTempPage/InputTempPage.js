@@ -53,7 +53,7 @@ const InputTempPage = () => {
     
     return (
     <div className='main_container'>
-        <img src={back} className="back_icon" onClick={()=>{history.goBack();}}/>
+        <img src={back} className="back_icon1" onClick={()=>{history.goBack();}}/>
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력
