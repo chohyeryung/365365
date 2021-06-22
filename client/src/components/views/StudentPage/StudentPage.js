@@ -17,6 +17,7 @@ const StudentPage = () => {
             })
             .then((res)=>{
               // setStudent(res.data.info)
+              console.log(res.data.info);
               history.push({
                 pathname: "/InputTemp",
                 state: {stu: res.data.info}
