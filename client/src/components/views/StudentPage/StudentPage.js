@@ -12,7 +12,7 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    console.log(result.e);
+    console.log(result.text);
     axios.get(`${SERVER}inputtemp`,{
                 scode:result
             })
