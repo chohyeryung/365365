@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const excel = require('exceljs');
 const app = express();
-const port = 1000;
+const PORT = process.env.PORT || 1000;
 const db = require('./db');
 const cors = require('cors');
 
@@ -79,7 +79,7 @@ const getDateTime = () => {
     return { ndate, ntime };
 }
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 })
 
@@ -184,6 +184,6 @@ app.get('/api/unchecking', (req, res) => {
     }); 
 });
 
-app.listen(port, () => console.log(`app listening on port ${port}`));
+app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
 
 // "start": "export PORT=80 && react-scripts start",
