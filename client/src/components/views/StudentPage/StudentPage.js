@@ -12,8 +12,9 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
+    console.log(result);
     axios.get(`${SERVER}inputtemp`,{
-                scode:result.text
+                scode:result
             })
             .then((res)=>{
               setStudent(res.data.info)
