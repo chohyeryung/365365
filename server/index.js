@@ -76,6 +76,7 @@ app.get('/api/inputtemp', (req, res) => {
     const diff_sql = `SELECT * FROM students WHERE banum = ?`;
 
     db.query(diff_sql, [scode], (error, student) => {
+        console.log(student);
         if(student.length == 0) {
             res.send({ info: '해당 학생은 존재하지 않습니다.' });
         } else {
