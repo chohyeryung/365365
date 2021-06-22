@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useHistory } from "react-router-dom";
 import axios from 'axios'
+import { SERVER } from '../../Config';
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.css";
 import back from './icon/back_icon.png'
@@ -11,7 +12,7 @@ const StudentPage = () => {
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-    axios.get('http://localhost:1000/api/inputtemp',{
+    axios.get(`${SERVER}inputtemp/`,{
                 scode:result
             })
             .then((res)=>{

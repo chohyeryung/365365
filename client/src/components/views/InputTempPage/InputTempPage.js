@@ -53,7 +53,7 @@ const InputTempPage = () => {
     
     return (
     <div className='main_container'>
-        <img src={back} className="back_icon" onClick={()=>{history.goBack();}}/>
+        <img src={back} className="back_icon" onClick={()=>{history.goBack();}} alt=""/>
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력
@@ -63,7 +63,7 @@ const InputTempPage = () => {
             </div>
             <div className="temp_input">
                 <div id ="temp_input_text">체온을 입력해주세요</div>
-                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick}/>
+                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick} alt=""/>
             </div>
             
             <div className="keypad">
