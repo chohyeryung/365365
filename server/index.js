@@ -70,8 +70,8 @@ const getDateTime = () => {
 }
 
 //학생 정보 존재 판별
-app.post('/api/inputtemp/:scode', (req, res) => {
-    let scode = req.params.scode;
+app.post('/api/inputtemp', (req, res) => {
+    let scode = req.body.scode;
 
     const diff_sql = `SELECT * FROM students WHERE banum = ?`;
 
@@ -88,13 +88,13 @@ app.post('/api/inputtemp/:scode', (req, res) => {
 });
 
 //학생 정보 수정, 온도 입력
-app.post('/api/updating/:hakbun/:temperture', (req, res) => {
+app.post('/api/updating', (req, res) => {
     let dateTime = getDateTime();
     let ndate = dateTime.ndate;
     let ntime = dateTime.ntime;
 
-    let shakbun = req.params.hakbun;
-    let stmp = req.params.temperture;
+    let shakbun = req.body.hakbun;
+    let stmp = req.body.temperture;
 
     const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
     db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {
