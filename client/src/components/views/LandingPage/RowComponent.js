@@ -32,7 +32,7 @@ function RowComponent(props) {
     setEditClicked(!editClicked);
     if(temperature !== '') {
       const endpoint = `${SERVER}updating/${hakbun.current.innerText}/${temperature}`;
-      axios.get(endpoint)
+      axios.post(endpoint)
     }
     
   }
