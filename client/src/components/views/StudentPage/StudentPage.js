@@ -11,13 +11,13 @@ const StudentPage = () => {
   const [student, setStudent] = useState("")
   const history = useHistory();
   const handleScan = (result)=>{
+    console.log(result);
     // 코드 확인
     axios.get(`${SERVER}inputtemp`,{
                 scode:result
             })
             .then((res)=>{
-              console.log(res);
-              setStudent(res.data)
+              setStudent(res.data.info)
             })
             .catch((err)=>{
                 console.log(err)
