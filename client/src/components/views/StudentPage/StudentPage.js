@@ -16,19 +16,20 @@ const StudentPage = () => {
                 scode:result.text
             })
             .then((res)=>{
-              setStudent(res.data.info)
+              // setStudent(res.data.info)
+              history.push({
+                pathname: "/InputTemp",
+                state: {stu: res.data.info}
+              })
+              .catch((err)=>{
+                  console.log(err)
+              })
             })
             .catch((err)=>{
                 console.log(err)
             })
     
-    history.push({
-      pathname: "/InputTemp",
-      state: {stu: student}
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+    
 
    
 
