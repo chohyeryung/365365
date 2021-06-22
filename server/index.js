@@ -91,7 +91,10 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 app.post('/api/updating/:hakbun/:temp', (req, res) => {
     let dateTime = getDateTime();
     let ndate = dateTime.ndate;
-    let ntime = dateTime.ntime;
+    
+    //시간 구하기
+    let today = new Date();
+    let ntime = today.toLocaleTimeString();
 
     let shakbun = req.params.hakbun;
     let stmp = req.params.temp;
