@@ -22,14 +22,10 @@ const InputTempPage = () => {
     const onKeyClick = (key) =>{
         let tempId = document.getElementById('temp_input_text')
         let temp =  tempId.innerHTML
+        let hakbun = student.substr(0, 4)
         
         if(key==="완료"){
-            console.log(temp);
-            console.log(student.substr(0,4));
-            axios.post(`${SERVER}updating`,{
-                temperture : temp.innerHTML,
-                hakbun :student.substr(0, 4)
-            })
+            axios.post(`${SERVER}updating/${hakbun}/${temp}`)
             .then((res)=>{
                 console.log(res)
             })
