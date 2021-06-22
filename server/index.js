@@ -70,9 +70,8 @@ const getDateTime = () => {
 }
 
 //학생 정보 존재 판별
-app.get('/api/inputtemp', (req, res) => {
-    let scode = req.body.scode;
-    alert(scode)
+app.get('/api/inputtemp/:scode', (req, res) => {
+    let scode = req.params.scode;
 
     const diff_sql = `SELECT * FROM students WHERE banum = ?`;
 
