@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useHistory } from "react-router-dom";
 import axios from 'axios'
+import { SERVER } from '../../Config';
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.css";
 import back from './icon/back_icon.png'
@@ -8,27 +9,24 @@ import { SERVER } from '../../Config';
 
 const StudentPage = () => {
 
-  const [student, setStudent] = useState("")
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
-      axios.post(`${SERVER}/inputtemp/${result}`)
-      .then((res)=>{
-        setStudent(res.data)
-      })
-      .catch((err)=>{
-          console.log(err)
-      })
-    
-    history.push({
-      pathname: "/InputTemp",
-      state: {student: student}
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
-
-   
+    const scode = result.text;
+    axios.get(`${SERVER}inputtemp/${scode}`)
+            .then((res)=>{
+              console.log(res.data.info);
+              history.push({
+                pathname: "/InputTemp",
+                state: {stu: res.data.info}
+              })
+              .catch((err)=>{
+                  console.log(err)
+              })
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
 
   }
 
@@ -39,7 +37,7 @@ const StudentPage = () => {
  
   return (
       <div className="main_container">
-        <img src={back} className="back_icon" onClick={()=>{  history.push({ pathname: "/",})}}/>
+        <img src={back} className="back_icon" onClick={()=>{  history.push({ pathname: "/",})}} alt=""/>
         <div className="text_top">학생증 바코드를 찍어주세요</div>
         <div className="barcode_scanner">
           <BarcodeScannerComponent

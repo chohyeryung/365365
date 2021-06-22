@@ -2,34 +2,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const excel = require('exceljs');
 const app = express();
-const port = 1000;
 const db = require('./db');
+const path = require('path');
 const cors = require('cors');
 
+// https
+const http = require('http')
+const https = require('https')
+const fs = require('fs')
+
+require('dotenv/config')
 const setting = require('./setting');
+
+const PORT = process.env.PORT || 1000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(bodyParser.json());
-
-// const lex = require('greenlock-express').create({
-//     version: 'draft-11', // 인증서 버전 (버전2)
-//     configDir: '/etc/letsencrypt', // 인증서 pem 위치
-//     server: 'https://acme-v02.api.letsencrypt.org/directory',
-//     approveDomains: (opts, certs, cb) => {
-//       if (certs) {
-//         opts.domains = ['samyukoh.com', 'www.samyukoh.com']; // 도메인 및 서브 도메인까지 입력
-//       }
-//       else {
-//         opts.email = 's2019w38@e-mirim.hs.kr'; // 사용자 이메일 입력
-//         opts.agreeTos = true;
-//       }
-//       cb(null, { options: opts, certs });
-//     },
-//     renewWithin: 81 * 24 * 60 * 60 * 1000,
-//     renewBy: 80 * 24 * 60 * 60 * 1000,
-// });
 
 const getDate = () => {
     let now = new Date();
@@ -79,10 +69,6 @@ const getDateTime = () => {
     return { ndate, ntime };
 }
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-})
-
 //학생 정보 존재 판별
 app.get('/api/inputtemp/:scode', (req, res) => {
     let scode = req.params.scode;
@@ -91,7 +77,7 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 
     db.query(diff_sql, [scode], (error, student) => {
         if(student.length == 0) {
-            res.send({ hakbun : "해당 학생은 존재하지 않습니다.", name : "해당 학생은 존재하지 않습니다." });
+            res.send({ info: '해당 학생은 존재하지 않습니다.' });
         } else {
             let hakbun = student[0].stnum;
             let name = student[0].name;
@@ -102,13 +88,13 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 });
 
 //학생 정보 수정, 온도 입력
-app.get('/api/updating/:hakbun/:temperture', (req, res) => {
+app.post('/api/updating', (req, res) => {
     let dateTime = getDateTime();
     let ndate = dateTime.ndate;
     let ntime = dateTime.ntime;
 
-    let shakbun = req.params.hakbun;
-    let stmp = req.params.temperture;
+    let shakbun = req.body.hakbun;
+    let stmp = req.body.temperture;
 
     const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
     db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {
@@ -184,6 +170,48 @@ app.get('/api/unchecking', (req, res) => {
     }); 
 });
 
-app.listen(port, () => console.log(`app listening on port ${port}`));
+// 404
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
+// app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+
+if (process.env.NODE_ENV === "production") {
+    // production mode
+    // https
+    // .pem key base url
+    const KEY_URL = process.env.KEY_URL;
+    const options = {
+      key: fs.readFileSync(`${KEY_URL}/privkey.pem`),
+      cert: fs.readFileSync(`${KEY_URL}/cert.pem`),
+      ca: fs.readFileSync(`${KEY_URL}/chain.pem`),
+    };
+  
+    https.createServer(options, app).listen(443, () => {
+      console.log(`365 listening at port 443`);
+    });
+  
+    // set up a route to redirect http to https
+    // https://stackoverflow.com/questions/7450940/automatic-https-connection-redirect-with-node-js-express
+    http
+      .createServer((req, res) => {
+        res.writeHead(301, {
+          Location: "https://" + req.headers["host"] + req.url,
+        });
+        res.end();
+      })
+      .listen(PORT, () => {
+        // 365 listening at port 80
+        console.log(`365 listening at port ${PORT}`);
+      });
+  } else {
+    // development mode
+    // http
+    http.createServer(app).listen(PORT, () => {
+      // 365 listening at port 5000
+      console.log(`365 listening at port ${PORT}`);
+    });
+  }
 
 // "start": "export PORT=80 && react-scripts start",

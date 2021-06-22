@@ -13,16 +13,34 @@ const InputTempPage = () => {
 
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
     const location = useLocation();
+<<<<<<< HEAD
     // const student = location.state.student;
     const student ="1101 김미림"
+=======
+    const student = location.state.stu;
+    console.log(student);
+    // const student ="1101 김미림"
+>>>>>>> 99f923d5762ce3f9d064e20e9f559a48d8068cfd
     const history = useHistory();
 
   
     const onKeyClick = (key) =>{
         let tempId = document.getElementById('temp_input_text')
         let temp =  tempId.innerHTML
-        let hakbun = student.substr(0, 4)
 
+<<<<<<< HEAD
+=======
+        axios.post(`${SERVER}updating`,{
+            temperture : temp.innerHTML,
+            hakbun :student.substr(0, 4)
+        })
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            alert(err)
+        })
+>>>>>>> 99f923d5762ce3f9d064e20e9f559a48d8068cfd
         
         if(key=="완료"){
             
@@ -57,7 +75,11 @@ const InputTempPage = () => {
     
     return (
     <div className='main_container'>
+<<<<<<< HEAD
         <img src={back} className="back_icon1" onClick={()=>{history.goBack();}}/>
+=======
+        <img src={back} className="back_icon" onClick={()=>{history.goBack();}} alt=""/>
+>>>>>>> 99f923d5762ce3f9d064e20e9f559a48d8068cfd
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력
@@ -67,7 +89,7 @@ const InputTempPage = () => {
             </div>
             <div className="temp_input">
                 <div id ="temp_input_text">체온을 입력해주세요</div>
-                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick}/>
+                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick} alt=""/>
             </div>
             
             <div className="keypad">
