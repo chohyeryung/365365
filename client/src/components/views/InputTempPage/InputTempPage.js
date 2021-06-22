@@ -23,7 +23,7 @@ const InputTempPage = () => {
         let tempId = document.getElementById('temp_input_text')
         let temp =  tempId.innerHTML
 
-        axios.post(`${SERVER}updating/`,{
+        axios.post(`${SERVER}updating`,{
             temperture : temp.innerHTML,
             hakbun :student.substr(0, 4)
         })
