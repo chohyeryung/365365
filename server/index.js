@@ -2,12 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const excel = require('exceljs');
 const app = express();
-const PORT = process.env.PORT || 1000;
 const db = require('./db');
 const path = require('path');
 const cors = require('cors');
 
+// https
+const http = require('http')
+const https = require('https')
+
+require('dotenv/config')
 const setting = require('./setting');
+
+const PORT = process.env.PORT || 1000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -61,11 +67,6 @@ const getDateTime = () => {
 
     return { ndate, ntime };
 }
-
-app.get("/", (req, res) => {
-    console.log(__diname);
-    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-})
 
 //학생 정보 존재 판별
 app.get('/api/inputtemp/:scode', (req, res) => {
@@ -168,6 +169,48 @@ app.get('/api/unchecking', (req, res) => {
     }); 
 });
 
-app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+// 404
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
+// app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+
+if (process.env.NODE_ENV === "production") {
+    // production mode
+    // https
+    // .pem key base url
+    const KEY_URL = process.env.KEY_URL;
+    const options = {
+      key: fs.readFileSync(`${KEY_URL}/privkey.pem`),
+      cert: fs.readFileSync(`${KEY_URL}/cert.pem`),
+      ca: fs.readFileSync(`${KEY_URL}/chain.pem`),
+    };
+  
+    https.createServer(options, app).listen(443, () => {
+      console.log(`DUZZLE listening at port 443`);
+    });
+  
+    // set up a route to redirect http to https
+    // https://stackoverflow.com/questions/7450940/automatic-https-connection-redirect-with-node-js-express
+    http
+      .createServer((req, res) => {
+        res.writeHead(301, {
+          Location: "https://" + req.headers["host"] + req.url,
+        });
+        res.end();
+      })
+      .listen(PORT, () => {
+        // DUZZLE listening at port 80
+        console.log(`DUZZLE listening at port ${PORT}`);
+      });
+  } else {
+    // development mode
+    // http
+    http.createServer(app).listen(PORT, () => {
+      // DUZZLE listening at port 5000
+      console.log(`DUZZLE listening at port ${PORT}`);
+    });
+  }
 
 // "start": "export PORT=80 && react-scripts start",
