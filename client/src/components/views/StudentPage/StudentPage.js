@@ -8,14 +8,12 @@ import back from './icon/back_icon.png'
 
 const StudentPage = () => {
 
-  const [student, setStudent] = useState("")
   const history = useHistory();
   const handleScan = (result)=>{
     // 코드 확인
     const scode = result.text;
     axios.get(`${SERVER}inputtemp/${scode}`)
             .then((res)=>{
-              // setStudent(res.data.info)
               console.log(res.data.info);
               history.push({
                 pathname: "/InputTemp",
