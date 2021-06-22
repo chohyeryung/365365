@@ -1,1 +1,1 @@
-export const SERVER = '/api/'
+export const SERVER = 'https://samyukoh.emirim.kr/api/'
