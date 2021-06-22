@@ -13,24 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(bodyParser.json());
 
-// const lex = require('greenlock-express').create({
-//     version: 'draft-11', // 인증서 버전 (버전2)
-//     configDir: '/etc/letsencrypt', // 인증서 pem 위치
-//     server: 'https://acme-v02.api.letsencrypt.org/directory',
-//     approveDomains: (opts, certs, cb) => {
-//       if (certs) {
-//         opts.domains = ['samyukoh.com', 'www.samyukoh.com']; // 도메인 및 서브 도메인까지 입력
-//       }
-//       else {
-//         opts.email = 's2019w38@e-mirim.hs.kr'; // 사용자 이메일 입력
-//         opts.agreeTos = true;
-//       }
-//       cb(null, { options: opts, certs });
-//     },
-//     renewWithin: 81 * 24 * 60 * 60 * 1000,
-//     renewBy: 80 * 24 * 60 * 60 * 1000,
-// });
-
 const getDate = () => {
     let now = new Date();
     let yyyy= now.getFullYear();
@@ -80,6 +62,7 @@ const getDateTime = () => {
 }
 
 app.get("/", (req, res) => {
+    console.log(__diname);
     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 })
 
