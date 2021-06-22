@@ -34,8 +34,9 @@ const InputTempPage = () => {
             alert(err)
         })
         
-        if(key=="완료"){
-            
+        if(key==="완료"){
+            console.log(temp.innerHTML);
+            console.log(student.substr(0,4));
             axios.post(`${SERVER}updating/`,{
                 temperture : temp.innerHTML,
                 hakbun :student.substr(0, 4)
