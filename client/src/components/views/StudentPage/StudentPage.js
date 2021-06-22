@@ -16,7 +16,7 @@ const StudentPage = () => {
                 scode:result
             })
             .then((res)=>{
-              setStudent(res.data)
+              setStudent(res.data.info)
             })
             .catch((err)=>{
                 console.log(err)
