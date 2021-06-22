@@ -36,8 +36,9 @@ function RowComponent(props) {
     }
     
   }
-
+  console.log(props.student.checked_time);
   return (
+    
     <>
       <tr className={isEmptyCheck(props.color)} key={props.student.stnum}>
         <td ref= { hakbun }>{props.student.stnum}</td>
