@@ -13,8 +13,8 @@ const InputTempPage = () => {
 
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
     const location = useLocation();
-    const student = location.state.stu;
-    console.log(location.state);
+    const student = location.state;
+    console.log(student);
     // const student ="1101 김미림"
     const history = useHistory();
 

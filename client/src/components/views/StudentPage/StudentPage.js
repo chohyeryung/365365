@@ -21,15 +21,19 @@ const StudentPage = () => {
             .catch((err)=>{
                 console.log(err)
             })
-  }
+    
+    console.log(student)
+    history.push({
+      pathname: "/InputTemp",
+      state: {stu: student}
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 
-  history.push({
-    pathname: "/InputTemp",
-    state: {stu: student}
-  })
-  .catch((err)=>{
-      console.log(err)
-  })
+   
+
+  }
 
   const handleError = (err)=>{
     console.log(err)
