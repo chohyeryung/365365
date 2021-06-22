@@ -5,7 +5,6 @@ import { SERVER } from '../../Config';
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import "./studentpage.css";
 import back from './icon/back_icon.png'
-import { SERVER } from '../../Config';
 
 const StudentPage = () => {
 
