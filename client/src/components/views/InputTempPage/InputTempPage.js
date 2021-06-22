@@ -21,7 +21,6 @@ const InputTempPage = () => {
     const onKeyClick = (key) =>{
         let tempId = document.getElementById('temp_input_text')
         let temp =  tempId.innerHTML
-        let hakbun = student.substr(0, 4)
 
         axios.post(`${SERVER}updating/`,{
             temperture : temp.innerHTML,
