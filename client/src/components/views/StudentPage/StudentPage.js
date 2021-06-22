@@ -22,7 +22,6 @@ const StudentPage = () => {
                 console.log(err)
             })
     
-    console.log(student)
     history.push({
       pathname: "/InputTemp",
       state: {stu: student}
