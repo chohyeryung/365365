@@ -77,7 +77,7 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 
     db.query(diff_sql, [scode], (error, student) => {
         if(student.length == 0) {
-            res.send({ hakbun : "해당 학생은 존재하지 않습니다.", name : "해당 학생은 존재하지 않습니다." });
+            res.send({ info: '해당 학생은 존재하지 않습니다.' });
         } else {
             let hakbun = student[0].stnum;
             let name = student[0].name;
