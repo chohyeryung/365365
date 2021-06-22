@@ -70,7 +70,7 @@ const getDateTime = () => {
 }
 
 //학생 정보 존재 판별
-app.post('/api/inputtemp', (req, res) => {
+app.post('https://samyukoh.emirim.kr/api/inputtemp', (req, res) => {
     let scode = req.body.scode;
 
     const diff_sql = `SELECT * FROM students WHERE banum = ?`;
@@ -88,7 +88,7 @@ app.post('/api/inputtemp', (req, res) => {
 });
 
 //학생 정보 수정, 온도 입력
-app.post('/api/updating', (req, res) => {
+app.post('https://samyukoh.emirim.kr/api/updating', (req, res) => {
     let dateTime = getDateTime();
     let ndate = dateTime.ndate;
     let ntime = dateTime.ntime;
@@ -104,7 +104,7 @@ app.post('/api/updating', (req, res) => {
 });
 
 //학생 정보 조회
-app.get('/api/students/:grade/:major', (req, res) => {
+app.get('https://samyukoh.emirim.kr/api/students/:grade/:major', (req, res) => {
     let ndate = getDate();
 
     let sgrade = req.params.grade;
@@ -145,7 +145,7 @@ app.get('/api/students/:grade/:major', (req, res) => {
 });
 
 //해당 날짜 엑셀 파일 저장
-app.get('/api/file_saving/:sdate', (req, res) => {
+app.get('https://samyukoh.emirim.kr/api/file_saving/:sdate', (req, res) => {
     let sdate = req.params.sdate;
     const select_sql = `SELECT * FROM check_students WHERE checked_date = '${sdate}'`;
     
@@ -158,7 +158,7 @@ app.get('/api/file_saving/:sdate', (req, res) => {
 });
 
 //체크 안한 학생 조회
-app.get('/api/unchecking', (req, res) => {
+app.get('https://samyukoh.emirim.kr/api/unchecking', (req, res) => {
     let ndate = getDate();
       
     const select_sql = `SELECT * FROM check_students WHERE checked = 0 and checked_date = '${ndate}'`;
@@ -189,7 +189,7 @@ if (process.env.NODE_ENV === "production") {
     };
   
     https.createServer(options, app).listen(443, () => {
-      console.log(`DUZZLE listening at port 443`);
+      console.log(`365 listening at port 443`);
     });
   
     // set up a route to redirect http to https
@@ -202,15 +202,15 @@ if (process.env.NODE_ENV === "production") {
         res.end();
       })
       .listen(PORT, () => {
-        // DUZZLE listening at port 80
-        console.log(`DUZZLE listening at port ${PORT}`);
+        // 365 listening at port 80
+        console.log(`365 listening at port ${PORT}`);
       });
   } else {
     // development mode
     // http
     http.createServer(app).listen(PORT, () => {
-      // DUZZLE listening at port 5000
-      console.log(`DUZZLE listening at port ${PORT}`);
+      // 365 listening at port 5000
+      console.log(`365 listening at port ${PORT}`);
     });
   }
 
