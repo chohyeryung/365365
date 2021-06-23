@@ -88,13 +88,16 @@ app.get('/api/inputtemp/:scode', (req, res) => {
 });
 
 //학생 정보 수정, 온도 입력
-app.post('/api/updating', (req, res) => {
+app.post('/api/updating/:hakbun/:temp', (req, res) => {
     let dateTime = getDateTime();
     let ndate = dateTime.ndate;
-    let ntime = dateTime.ntime;
+    
+    //시간 구하기
+    let today = new Date();
+    let ntime = today.toLocaleTimeString();
 
-    let shakbun = req.body.hakbun;
-    let stmp = req.body.temperture;
+    let shakbun = req.params.hakbun;
+    let stmp = req.params.temp;
 
     const update_sql = `UPDATE check_students SET temp = ?, checked_time = ?, checked = ? WHERE checked_date = ? AND stnum = ?`;
     db.query(update_sql, [stmp, ntime, 1, ndate, shakbun], (error, result) => {

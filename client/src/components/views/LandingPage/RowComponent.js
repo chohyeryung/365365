@@ -32,12 +32,13 @@ function RowComponent(props) {
     setEditClicked(!editClicked);
     if(temperature !== '') {
       const endpoint = `${SERVER}updating/${hakbun.current.innerText}/${temperature}`;
-      axios.get(endpoint)
+      axios.post(endpoint)
     }
     
   }
-
+  console.log(props.student.checked_time);
   return (
+    
     <>
       <tr className={isEmptyCheck(props.color)} key={props.student.stnum}>
         <td ref= { hakbun }>{props.student.stnum}</td>

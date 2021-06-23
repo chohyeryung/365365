@@ -22,14 +22,9 @@ const InputTempPage = () => {
         let tempId = document.getElementById('temp_input_text')
         let temp =  tempId.innerHTML
         let hakbun = student.substr(0, 4)
-
         
-        if(key=="완료"){
-            
-            axios.post(`${SERVER}updating/`,{
-                temperture : temp.innerHTML,
-                hakbun :student.substr(0, 4)
-            })
+        if(key==="완료"){
+            axios.post(`${SERVER}updating/${hakbun}/${temp}`)
             .then((res)=>{
                 console.log(res)
             })
@@ -57,7 +52,7 @@ const InputTempPage = () => {
     
     return (
     <div className='main_container'>
-        <img src={back} className="back_icon" onClick={()=>{history.goBack();}}/>
+        <img src={back} className="back_icon" onClick={()=>{history.goBack();}} alt=""/>
         <div className="outline_input">
             <div className="temp_text">
                 체온 입력
