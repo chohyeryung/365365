@@ -48,7 +48,7 @@ const StudentPage = () => {
             }}
           />
         </div>
-        <div className="text_bottom">정중앙에 자세히 찍어주시길 바랍니다.</div>
+        <div className="text_bottom">정중앙에서 바코드 전체가 잘 나오도록 찍어주시기 바랍니다.</div>
 
       </div>
       

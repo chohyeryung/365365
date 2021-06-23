@@ -10,6 +10,16 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.navbar-logo {
+  justify-self: start;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  text-decoration: none;
 }
 
 .white_box {

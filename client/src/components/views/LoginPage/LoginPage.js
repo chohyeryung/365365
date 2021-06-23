@@ -11,11 +11,12 @@ function LoginPage({ history }) {
     if (id === login.id && pw === login.pw) {
       history.push("/teacher");
     } else {
-      alert("Faild");
+      alert("올바른 아이디와 비밀번호를 입력해주세요.");
     }
   };
   return (
     <div className="container">
+      <span className="navbar-logo"><a href='/' style={{ textDecoration: 'none' }}>365, 36.5</a></span>
       <div className="white_box">
         <div className="title_box">
           <p className="top_title">365, 36.5</p>
