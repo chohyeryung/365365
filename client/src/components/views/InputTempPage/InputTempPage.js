@@ -13,8 +13,7 @@ const InputTempPage = () => {
 
     const keys = ["1","2","3","4","5","6","7","8","9",".","0","완료"];
     const location = useLocation();
-    const student = location.state.stu;
-    console.log(student);
+    const student = location.state.student;
     // const student ="1101 김미림"
     const history = useHistory();
 
@@ -63,7 +62,7 @@ const InputTempPage = () => {
             </div>
             <div className="temp_input">
                 <div id ="temp_input_text">체온을 입력해주세요</div>
-                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick} alt=""/>
+                <img src={backspace} className="backspace_icon" onClick={onBackspaceClick}/>
             </div>
             
             <div className="keypad">
