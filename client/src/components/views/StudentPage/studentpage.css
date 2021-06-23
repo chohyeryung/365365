@@ -10,6 +10,7 @@
 .text_top{
     font-size: 1.7rem;
     color: whitesmoke;
+    font-weight: bold;
 }
 .barcode_scanner{
     margin-top: 15px;
