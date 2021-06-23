@@ -16,7 +16,7 @@ function LoginPage({ history }) {
   };
   return (
     <div className="container">
-      <span className="navbar-logo"><a href='/' style={{ textDecoration: 'none' }}>365, 36.5</a></span>
+      <span className="logo"><a href='/' style={{ textDecoration: 'none' }}>365, 36.5</a></span>
       <div className="white_box">
         <div className="title_box">
           <p className="top_title">365, 36.5</p>
